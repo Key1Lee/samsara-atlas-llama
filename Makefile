@@ -1,4 +1,4 @@
-.PHONY: setup seed api ui demo test load
+.PHONY: setup seed api ui demo test load benchmark
 
 venv:
 	python3 -m venv .venv
@@ -28,4 +28,8 @@ test:
 	.venv/bin/pytest tests/ -v
 
 load:
-	.venv/bin/python scripts/load_test.py
+	.venv/bin/python scripts/load_test.py $(LOAD_ARGS)
+
+# Paced live baseline; separate from the existing eight-attempt correctness probe.
+benchmark:
+	.venv/bin/python scripts/benchmark_stages.py $(BENCHMARK_ARGS)

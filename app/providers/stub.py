@@ -21,7 +21,7 @@ class StubProvider(ModelProvider):
                 "subject": f"Following up on your case: {key[:12]}",
                 "body": "Thanks for reaching out. Here is what I found and the next steps.",
                 "tone": kwargs.get("tone", "empathetic"),
-                "cited_snippets": ["Snippet from leave-of-absence policy"],
+                "cited_snippets": [],
             })
         elif "summary" in prompt.lower() and "action_items" in prompt.lower():
             text = json.dumps({
@@ -34,7 +34,7 @@ class StubProvider(ModelProvider):
                 "subject": f"Following up on your case: {key[:12]}",
                 "body": "Thanks for reaching out. Here is what I found and the next steps.",
                 "tone": kwargs.get("tone", "empathetic"),
-                "cited_snippets": ["Snippet from leave-of-absence policy"],
+                "cited_snippets": [],
             })
         else:
             text = f"[stub response for {key[:16]}]"

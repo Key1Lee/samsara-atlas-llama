@@ -1,0 +1,1188 @@
+{
+  "version": "atlas.calibration.v1",
+  "description": "Synthetic diagnostic fixtures with exact deterministic contracts; semantic labels need independent human review.",
+  "cases": [
+    {
+      "id": "dev-valid",
+      "split": "dev",
+      "kind": "valid",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 1,
+        "state": "completed",
+        "question": "How much leave can I carry over?",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "The test policy allows five days of leave carryover. Ask HR to verify applicability.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-malformed_json",
+      "split": "dev",
+      "kind": "malformed_json",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "historical_json_parse",
+        "json_parse"
+      ],
+      "case": {
+        "case_id": 2,
+        "state": "failed",
+        "question": "How much leave can I carry over?",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "generate_structured_response",
+            "status": "failed",
+            "error": "JSONDecodeError",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ],
+        "raw_completion": "{"
+      }
+    },
+    {
+      "id": "dev-missing_fields",
+      "split": "dev",
+      "kind": "missing_fields",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "response_schema"
+      ],
+      "case": {
+        "case_id": 3,
+        "state": "completed",
+        "question": "How much leave can I carry over?",
+        "answer": {
+          "subject": "Draft"
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-retrieval_miss",
+      "split": "dev",
+      "kind": "retrieval_miss",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "retrieval_expected_sources"
+      ],
+      "case": {
+        "case_id": 4,
+        "state": "completed",
+        "question": "How much leave can I carry over?",
+        "answer": {
+          "subject": "HR help",
+          "body": "No verified policy is available. Ask HR.",
+          "tone": "direct",
+          "cited_snippets": []
+        },
+        "sources": [],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [],
+        "expected_source_ids": [
+          "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab"
+        ]
+      }
+    },
+    {
+      "id": "dev-unsupported_answer",
+      "split": "dev",
+      "kind": "unsupported_answer",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "grounding",
+        "contradiction",
+        "unsupported_claim",
+        "policy_interpretation"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 5,
+        "state": "completed",
+        "question": "How much leave can I carry over?",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "You are entitled to twenty days of carryover and no HR check is needed.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-incorrect_citation",
+      "split": "dev",
+      "kind": "incorrect_citation",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "citation_alignment"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "citation_validity"
+      ],
+      "case": {
+        "case_id": 6,
+        "state": "completed",
+        "question": "How much leave can I carry over?",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "The test policy allows five days of leave carryover. Ask HR to verify applicability.",
+          "tone": "direct",
+          "cited_snippets": [
+            "The limit is twenty days."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-abstention",
+      "split": "dev",
+      "kind": "abstention",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 7,
+        "state": "completed",
+        "question": "What is my pet insurance premium?",
+        "answer": {
+          "subject": "Ask HR",
+          "body": "No verified pet insurance information is available here. Ask HR.",
+          "tone": "direct",
+          "cited_snippets": []
+        },
+        "sources": [],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "Abstain from inventing pet insurance information."
+        ]
+      }
+    },
+    {
+      "id": "dev-partial_answer",
+      "split": "dev",
+      "kind": "partial_answer",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "completeness"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 8,
+        "state": "completed",
+        "question": "How much leave can I carry over?",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "Ask HR to verify applicability.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-timeout",
+      "split": "dev",
+      "kind": "timeout",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "provider_timeout"
+      ],
+      "case": {
+        "case_id": 9,
+        "state": "failed",
+        "question": "How much leave can I carry over?",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure",
+            "error_code": "provider_timeout"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "summarize_and_extract_actions",
+            "status": "failed",
+            "error": "ProviderTimeout",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-serving_failure",
+      "split": "dev",
+      "kind": "serving_failure",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "workflow_failure"
+      ],
+      "case": {
+        "case_id": 10,
+        "state": "failed",
+        "question": "How much leave can I carry over?",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure",
+            "error_code": "provider_unavailable"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "summarize_and_extract_actions",
+            "status": "failed",
+            "error": "ProviderUnavailable",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-workflow_integration",
+      "split": "dev",
+      "kind": "workflow_integration",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "historical_import"
+      ],
+      "case": {
+        "case_id": 11,
+        "state": "failed",
+        "question": "How much leave can I carry over?",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure",
+            "error_code": "workflow_error"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "summarize_and_extract_actions",
+            "status": "failed",
+            "error": "ImportError",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "dev-unproven_action",
+      "split": "dev",
+      "kind": "unproven_action",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "execution_claim",
+        "unsupported_claim"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 12,
+        "state": "completed",
+        "question": "How much leave can I carry over?",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "I have updated your leave balance to include five days.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-valid",
+      "split": "test",
+      "kind": "valid",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 101,
+        "state": "completed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "The test policy allows five days of leave carryover. Ask HR to verify applicability.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-malformed_json",
+      "split": "test",
+      "kind": "malformed_json",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "historical_json_parse",
+        "json_parse"
+      ],
+      "case": {
+        "case_id": 102,
+        "state": "failed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "generate_structured_response",
+            "status": "failed",
+            "error": "JSONDecodeError",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ],
+        "raw_completion": "{"
+      }
+    },
+    {
+      "id": "test-missing_fields",
+      "split": "test",
+      "kind": "missing_fields",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "response_schema"
+      ],
+      "case": {
+        "case_id": 103,
+        "state": "completed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": {
+          "subject": "Draft"
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-retrieval_miss",
+      "split": "test",
+      "kind": "retrieval_miss",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "retrieval_expected_sources"
+      ],
+      "case": {
+        "case_id": 104,
+        "state": "completed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": {
+          "subject": "HR help",
+          "body": "No verified policy is available. Ask HR.",
+          "tone": "direct",
+          "cited_snippets": []
+        },
+        "sources": [],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [],
+        "expected_source_ids": [
+          "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab"
+        ]
+      }
+    },
+    {
+      "id": "test-unsupported_answer",
+      "split": "test",
+      "kind": "unsupported_answer",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "grounding",
+        "contradiction",
+        "unsupported_claim",
+        "policy_interpretation"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 105,
+        "state": "completed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "You are entitled to twenty days of carryover and no HR check is needed.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-incorrect_citation",
+      "split": "test",
+      "kind": "incorrect_citation",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "citation_alignment"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "citation_validity"
+      ],
+      "case": {
+        "case_id": 106,
+        "state": "completed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "The test policy allows five days of leave carryover. Ask HR to verify applicability.",
+          "tone": "direct",
+          "cited_snippets": [
+            "The limit is twenty days."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-abstention",
+      "split": "test",
+      "kind": "abstention",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 107,
+        "state": "completed",
+        "question": "What is my pet insurance premium?",
+        "answer": {
+          "subject": "Ask HR",
+          "body": "No verified pet insurance information is available here. Ask HR.",
+          "tone": "direct",
+          "cited_snippets": []
+        },
+        "sources": [],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "Abstain from inventing pet insurance information."
+        ]
+      }
+    },
+    {
+      "id": "test-partial_answer",
+      "split": "test",
+      "kind": "partial_answer",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "completeness"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 108,
+        "state": "completed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "Ask HR to verify applicability.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-timeout",
+      "split": "test",
+      "kind": "timeout",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "provider_timeout"
+      ],
+      "case": {
+        "case_id": 109,
+        "state": "failed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure",
+            "error_code": "provider_timeout"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "summarize_and_extract_actions",
+            "status": "failed",
+            "error": "ProviderTimeout",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-serving_failure",
+      "split": "test",
+      "kind": "serving_failure",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "workflow_failure"
+      ],
+      "case": {
+        "case_id": 110,
+        "state": "failed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure",
+            "error_code": "provider_unavailable"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "summarize_and_extract_actions",
+            "status": "failed",
+            "error": "ProviderUnavailable",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-workflow_integration",
+      "split": "test",
+      "kind": "workflow_integration",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [],
+      "human_reviewed": false,
+      "expected_failed_checks": [
+        "workflow_completed",
+        "historical_import"
+      ],
+      "case": {
+        "case_id": 111,
+        "state": "failed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": null,
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_failed",
+            "outcome": "failure",
+            "error_code": "workflow_error"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          },
+          {
+            "name": "summarize_and_extract_actions",
+            "status": "failed",
+            "error": "ImportError",
+            "attempts": 1
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    },
+    {
+      "id": "test-unproven_action",
+      "split": "test",
+      "kind": "unproven_action",
+      "label_origin": "synthetic_author_expectation",
+      "synthetic_expected_concerns": [
+        "execution_claim",
+        "unsupported_claim"
+      ],
+      "human_reviewed": false,
+      "expected_failed_checks": [],
+      "case": {
+        "case_id": 112,
+        "state": "completed",
+        "question": "Please explain the leave carryover limit and conditions.",
+        "answer": {
+          "subject": "Carryover guidance",
+          "body": "I have updated your leave balance to include five days.",
+          "tone": "direct",
+          "cited_snippets": [
+            "Employees may carry over five days of leave. HR must verify applicability."
+          ]
+        },
+        "sources": [
+          {
+            "id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab",
+            "chunk_id": "sha256:ab61a1549f2400646ce7225245da9016f15f8d2473a2086d7801a0834ba0bcab:whole",
+            "text": "## Test policy\nEmployees may carry over five days of leave. HR must verify applicability.\n",
+            "rank": 1,
+            "score": 1.0,
+            "authorized": true,
+            "available": true
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "event_type": "case_completed",
+            "outcome": "success"
+          }
+        ],
+        "steps": [
+          {
+            "name": "retrieve_policy_snippets",
+            "status": "completed"
+          }
+        ],
+        "criteria": [
+          "The answer must mention five days and the need for HR applicability verification."
+        ]
+      }
+    }
+  ]
+}

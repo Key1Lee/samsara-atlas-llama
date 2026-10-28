@@ -1,0 +1,2030 @@
+{
+  "revision": "baseline-100-v1",
+  "verification": "Expected policy clauses were checked verbatim against the nine supplied synthetic policy files. Questions and answer checks are authored from those clauses, not model output. Not HR-approved legal guidance or a human-reviewed live-answer accuracy study.",
+  "limitations": [
+    "100 questions cover 25 fact/topic groups with four wording variants each; variants are correlated, not 100 independent policy facts.",
+    "Answer patterns and exact cited-clause checks are conservative mechanical contracts, not proof of arbitrary prose accuracy.",
+    "Four personal-balance probes have no BM25 source-selection expectation because the missing source is authoritative employee data, not a policy document."
+  ],
+  "source_sha256": {
+    "benefits-overview.md": "7f545f16f202cb0c979cebd0f470d73b0eeeb155a1defd9c1c64c30cc6421029",
+    "code-of-conduct.md": "2c03c9a67ecdf595e9195431d7e7070b2579e93c21595bf1496d21b84a1773ed",
+    "expense-policy.md": "021a2df13824f7f8ac00c3e39e3df609f30feff36d7e8f2299c804e9b0293186",
+    "harassment-reporting-policy.md": "daf6a194b4ef366a7ac0b9b9d3990f4a2286c9a4a16d07aedc85d181a8612579",
+    "leave-of-absence-policy.md": "f67c3719a3e946f21c63fb638547687373c51ae10569117564a49d0634ad4ba9",
+    "parental-leave-policy.md": "b1fd4dd09d0c4df9425250c66a29a9a94b432df34c7974b93c75a84f0829dfbb",
+    "pto-policy.md": "8628608e32b3910cfe178068d7cca68620dd8891cd8a8ea170fa9a1dc1a243b5",
+    "remote-work-policy.md": "150662b8b44259b3ea97d07ae78630e46fdc93792988a921e5d1e4e7a687b052",
+    "workplace-accommodation-policy.md": "3dffff723a6b7513dc5bab01581555b2cc97bdf82690af5f9958584aaaa27341"
+  },
+  "questions": [
+    {
+      "id": "pto_carry_1",
+      "question": "How many PTO hours can I carry over?",
+      "fact_group": "pto_carry",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "answer_patterns": [
+        "\\b(?:40|forty)\\b",
+        "local law"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_carry_2",
+      "question": "What is the PTO rollover cap and its legal exception?",
+      "fact_group": "pto_carry",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "answer_patterns": [
+        "\\b(?:40|forty)\\b",
+        "local law"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_carry_3",
+      "question": "How much unused vacation can I keep for next year?",
+      "fact_group": "pto_carry",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "answer_patterns": [
+        "\\b(?:40|forty)\\b",
+        "local law"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_carry_4",
+      "question": "Does PTO over 40 hours expire, and are there exceptions?",
+      "fact_group": "pto_carry",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "answer_patterns": [
+        "\\b(?:40|forty)\\b",
+        "local law"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_request_1",
+      "question": "How do I request planned PTO and get it approved?",
+      "fact_group": "pto_request",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Submit requests through Workday at least 2 weeks in advance for planned time off"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Manager approval is required before time off is confirmed"
+        }
+      ],
+      "answer_patterns": [
+        "workday",
+        "(?:2|two) weeks",
+        "manager",
+        "approv"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_request_2",
+      "question": "Where do I submit time off and how much notice is required?",
+      "fact_group": "pto_request",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Submit requests through Workday at least 2 weeks in advance for planned time off"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Manager approval is required before time off is confirmed"
+        }
+      ],
+      "answer_patterns": [
+        "workday",
+        "(?:2|two) weeks",
+        "manager",
+        "approv"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_request_3",
+      "question": "Who approves planned PTO, and when must I request it?",
+      "fact_group": "pto_request",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Submit requests through Workday at least 2 weeks in advance for planned time off"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Manager approval is required before time off is confirmed"
+        }
+      ],
+      "answer_patterns": [
+        "workday",
+        "(?:2|two) weeks",
+        "manager",
+        "approv"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_request_4",
+      "question": "Explain the Workday notice and manager approval rules for PTO.",
+      "fact_group": "pto_request",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Submit requests through Workday at least 2 weeks in advance for planned time off"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "- Manager approval is required before time off is confirmed"
+        }
+      ],
+      "answer_patterns": [
+        "workday",
+        "(?:2|two) weeks",
+        "manager",
+        "approv"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_payout_1",
+      "question": "What is the PTO payout policy when leaving?",
+      "fact_group": "pto_payout",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Accrued, unused PTO is paid out on separation where required by state law"
+        }
+      ],
+      "answer_patterns": [
+        "(?:separation|leav|depart)",
+        "(?:state|local) law",
+        "(?:paid|pay|payout)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_payout_2",
+      "question": "Is unused PTO paid out on separation under state law?",
+      "fact_group": "pto_payout",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Accrued, unused PTO is paid out on separation where required by state law"
+        }
+      ],
+      "answer_patterns": [
+        "(?:separation|leav|depart)",
+        "(?:state|local) law",
+        "(?:paid|pay|payout)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_payout_3",
+      "question": "Does departure payout for accrued vacation depend on state law?",
+      "fact_group": "pto_payout",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Accrued, unused PTO is paid out on separation where required by state law"
+        }
+      ],
+      "answer_patterns": [
+        "(?:separation|leav|depart)",
+        "(?:state|local) law",
+        "(?:paid|pay|payout)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "pto_payout_4",
+      "question": "Explain unused PTO payout on leaving, including the legal condition.",
+      "fact_group": "pto_payout",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "- Accrued, unused PTO is paid out on separation where required by state law"
+        }
+      ],
+      "answer_patterns": [
+        "(?:separation|leav|depart)",
+        "(?:state|local) law",
+        "(?:paid|pay|payout)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_zone_1",
+      "question": "Which roles can work remotely and from what approved zone?",
+      "fact_group": "remote_zone",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "answer_patterns": [
+        "remote.eligible",
+        "approved",
+        "(?:US|U.S.) zone"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_zone_2",
+      "question": "Does remote work require a remote-eligible role and an approved US Zone?",
+      "fact_group": "remote_zone",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "answer_patterns": [
+        "remote.eligible",
+        "approved",
+        "(?:US|U.S.) zone"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_zone_3",
+      "question": "What are the role and zone conditions for remote work?",
+      "fact_group": "remote_zone",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "answer_patterns": [
+        "remote.eligible",
+        "approved",
+        "(?:US|U.S.) zone"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_zone_4",
+      "question": "Explain remote-work eligibility and the approved location requirement.",
+      "fact_group": "remote_zone",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "answer_patterns": [
+        "remote.eligible",
+        "approved",
+        "(?:US|U.S.) zone"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_equipment_1",
+      "question": "When do new hires receive a remote-work laptop?",
+      "fact_group": "remote_equipment",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- New hires receive a laptop and standard peripherals within the first week"
+        }
+      ],
+      "answer_patterns": [
+        "laptop",
+        "(?:first|1st|one|1) week"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_equipment_2",
+      "question": "As a new hire, when do I receive a laptop for remote work?",
+      "fact_group": "remote_equipment",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- New hires receive a laptop and standard peripherals within the first week"
+        }
+      ],
+      "answer_patterns": [
+        "laptop",
+        "(?:first|1st|one|1) week"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_equipment_3",
+      "question": "What is the delivery timing for new-hire laptops and peripherals?",
+      "fact_group": "remote_equipment",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- New hires receive a laptop and standard peripherals within the first week"
+        }
+      ],
+      "answer_patterns": [
+        "laptop",
+        "(?:first|1st|one|1) week"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_equipment_4",
+      "question": "Does remote-work equipment arrive in the first week for new hires?",
+      "fact_group": "remote_equipment",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- New hires receive a laptop and standard peripherals within the first week"
+        }
+      ],
+      "answer_patterns": [
+        "laptop",
+        "(?:first|1st|one|1) week"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_move_1",
+      "question": "Can I relocate to another state while working remotely?",
+      "fact_group": "remote_move",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        }
+      ],
+      "answer_patterns": [
+        "(?:notify|inform|tell|contact).*HR|HR.*(?:notify|inform|tell|contact)",
+        "before",
+        "(?:payroll|tax)",
+        "benefits",
+        "compensation"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_move_2",
+      "question": "Do I need to tell HR before moving to another state?",
+      "fact_group": "remote_move",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        }
+      ],
+      "answer_patterns": [
+        "(?:notify|inform|tell|contact).*HR|HR.*(?:notify|inform|tell|contact)",
+        "before",
+        "(?:payroll|tax)",
+        "benefits",
+        "compensation"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_move_3",
+      "question": "Why must remote employees notify HR before relocating?",
+      "fact_group": "remote_move",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        }
+      ],
+      "answer_patterns": [
+        "(?:notify|inform|tell|contact).*HR|HR.*(?:notify|inform|tell|contact)",
+        "before",
+        "(?:payroll|tax)",
+        "benefits",
+        "compensation"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "remote_move_4",
+      "question": "What payroll, benefits and compensation issues can relocation affect?",
+      "fact_group": "remote_move",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "- Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        }
+      ],
+      "answer_patterns": [
+        "(?:notify|inform|tell|contact).*HR|HR.*(?:notify|inform|tell|contact)",
+        "before",
+        "(?:payroll|tax)",
+        "benefits",
+        "compensation"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_health_1",
+      "question": "When does medical, dental and vision coverage begin after hire?",
+      "fact_group": "benefits_health",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- Medical, dental, and vision plans are available starting the first day of\n  the month following hire date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:medical|health)",
+        "dental",
+        "vision",
+        "first day",
+        "month",
+        "(?:following|after)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_health_2",
+      "question": "What start-date rule applies to new-hire health coverage?",
+      "fact_group": "benefits_health",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- Medical, dental, and vision plans are available starting the first day of\n  the month following hire date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:medical|health)",
+        "dental",
+        "vision",
+        "first day",
+        "month",
+        "(?:following|after)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_health_3",
+      "question": "Does health coverage start on the first day of the month after hire?",
+      "fact_group": "benefits_health",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- Medical, dental, and vision plans are available starting the first day of\n  the month following hire date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:medical|health)",
+        "dental",
+        "vision",
+        "first day",
+        "month",
+        "(?:following|after)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_health_4",
+      "question": "Explain the start date for medical, dental and vision benefits.",
+      "fact_group": "benefits_health",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- Medical, dental, and vision plans are available starting the first day of\n  the month following hire date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:medical|health)",
+        "dental",
+        "vision",
+        "first day",
+        "month",
+        "(?:following|after)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_enroll_1",
+      "question": "How many days do new hires have to enroll in benefits?",
+      "fact_group": "benefits_enroll",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- New hires have 30 days from their start date to enroll"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty)",
+        "(?:enroll|enrol)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_enroll_2",
+      "question": "What is the benefits enrollment deadline after starting?",
+      "fact_group": "benefits_enroll",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- New hires have 30 days from their start date to enroll"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty)",
+        "(?:enroll|enrol)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_enroll_3",
+      "question": "Do new hires have 30 days from their start date for benefits enrollment?",
+      "fact_group": "benefits_enroll",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- New hires have 30 days from their start date to enroll"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty)",
+        "(?:enroll|enrol)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_enroll_4",
+      "question": "When must a new employee enroll in benefits?",
+      "fact_group": "benefits_enroll",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- New hires have 30 days from their start date to enroll"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty)",
+        "(?:enroll|enrol)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_match_1",
+      "question": "When is the 401(k) company match available under the policy?",
+      "fact_group": "benefits_match",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- 401(k) with company match is available after 90 days of employment"
+        }
+      ],
+      "answer_patterns": [
+        "(?:90|ninety)",
+        "(?:match|401|retirement)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_match_2",
+      "question": "What waiting period applies to the retirement company match?",
+      "fact_group": "benefits_match",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- 401(k) with company match is available after 90 days of employment"
+        }
+      ],
+      "answer_patterns": [
+        "(?:90|ninety)",
+        "(?:match|401|retirement)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_match_3",
+      "question": "Is retirement matching available after 90 days of employment?",
+      "fact_group": "benefits_match",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- 401(k) with company match is available after 90 days of employment"
+        }
+      ],
+      "answer_patterns": [
+        "(?:90|ninety)",
+        "(?:match|401|retirement)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "benefits_match_4",
+      "question": "Explain the employment-duration requirement for the company retirement match.",
+      "fact_group": "benefits_match",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "- 401(k) with company match is available after 90 days of employment"
+        }
+      ],
+      "answer_patterns": [
+        "(?:90|ninety)",
+        "(?:match|401|retirement)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_receipt_1",
+      "question": "When do I need an itemized receipt for an expense reimbursement?",
+      "fact_group": "expense_receipt",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Include an itemized receipt for any expense over $25"
+        }
+      ],
+      "answer_patterns": [
+        "itemized",
+        "(?:over|above|exceed|more than)",
+        "(?:25|twenty.five)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_receipt_2",
+      "question": "What is the itemized-receipt threshold for expenses?",
+      "fact_group": "expense_receipt",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Include an itemized receipt for any expense over $25"
+        }
+      ],
+      "answer_patterns": [
+        "itemized",
+        "(?:over|above|exceed|more than)",
+        "(?:25|twenty.five)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_receipt_3",
+      "question": "Does an expense over $25 require an itemized receipt?",
+      "fact_group": "expense_receipt",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Include an itemized receipt for any expense over $25"
+        }
+      ],
+      "answer_patterns": [
+        "itemized",
+        "(?:over|above|exceed|more than)",
+        "(?:25|twenty.five)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_receipt_4",
+      "question": "Explain the receipt requirement for reimbursement above $25.",
+      "fact_group": "expense_receipt",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Include an itemized receipt for any expense over $25"
+        }
+      ],
+      "answer_patterns": [
+        "itemized",
+        "(?:over|above|exceed|more than)",
+        "(?:25|twenty.five)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_deadline_1",
+      "question": "How soon must I submit an expense reimbursement?",
+      "fact_group": "expense_deadline",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Submit expenses within 30 days of the expense date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty) days",
+        "expense"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_deadline_2",
+      "question": "What is the submission deadline measured from the expense date?",
+      "fact_group": "expense_deadline",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Submit expenses within 30 days of the expense date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty) days",
+        "expense"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_deadline_3",
+      "question": "Do expenses need to be submitted within 30 days of the expense date?",
+      "fact_group": "expense_deadline",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Submit expenses within 30 days of the expense date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty) days",
+        "expense"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_deadline_4",
+      "question": "How many days after an expense can I submit it for reimbursement?",
+      "fact_group": "expense_deadline",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- Submit expenses within 30 days of the expense date"
+        }
+      ],
+      "answer_patterns": [
+        "(?:30|thirty) days",
+        "expense"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_appeal_1",
+      "question": "My expense was rejected. Who hears the appeal and what is the deadline?",
+      "fact_group": "expense_appeal",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- If a submitted expense is rejected, the employee can appeal to their\n  manager and People Ops within 14 days of the rejection"
+        }
+      ],
+      "answer_patterns": [
+        "(?:14|fourteen) days",
+        "manager",
+        "people ops"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_appeal_2",
+      "question": "How long do I have to appeal an expense rejection to my manager and People Ops?",
+      "fact_group": "expense_appeal",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- If a submitted expense is rejected, the employee can appeal to their\n  manager and People Ops within 14 days of the rejection"
+        }
+      ],
+      "answer_patterns": [
+        "(?:14|fourteen) days",
+        "manager",
+        "people ops"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_appeal_3",
+      "question": "What are the recipients and deadline for a rejected-expense appeal?",
+      "fact_group": "expense_appeal",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- If a submitted expense is rejected, the employee can appeal to their\n  manager and People Ops within 14 days of the rejection"
+        }
+      ],
+      "answer_patterns": [
+        "(?:14|fourteen) days",
+        "manager",
+        "people ops"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "expense_appeal_4",
+      "question": "Explain the 14-day expense appeal process and who receives it.",
+      "fact_group": "expense_appeal",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "- If a submitted expense is rejected, the employee can appeal to their\n  manager and People Ops within 14 days of the rejection"
+        }
+      ],
+      "answer_patterns": [
+        "(?:14|fourteen) days",
+        "manager",
+        "people ops"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_eligibility_1",
+      "question": "Does medical leave eligibility require 12 months and 1,250 hours, and who determines it?",
+      "fact_group": "leave_eligibility",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees become eligible for protected leave after 12 months of employment\n  and 1,250 hours worked in the prior 12 months (or per local law, whichever\n  is more generous)"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Always route eligibility determinations through an HR partner - do not\n  confirm eligibility informally"
+        }
+      ],
+      "answer_patterns": [
+        "(?:12 months|one year|1 year)",
+        "1,?250",
+        "local law",
+        "HR"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_eligibility_2",
+      "question": "What service, hours and local-law conditions apply to protected leave?",
+      "fact_group": "leave_eligibility",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees become eligible for protected leave after 12 months of employment\n  and 1,250 hours worked in the prior 12 months (or per local law, whichever\n  is more generous)"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Always route eligibility determinations through an HR partner - do not\n  confirm eligibility informally"
+        }
+      ],
+      "answer_patterns": [
+        "(?:12 months|one year|1 year)",
+        "1,?250",
+        "local law",
+        "HR"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_eligibility_3",
+      "question": "Explain protected-leave eligibility and why HR must determine it.",
+      "fact_group": "leave_eligibility",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees become eligible for protected leave after 12 months of employment\n  and 1,250 hours worked in the prior 12 months (or per local law, whichever\n  is more generous)"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Always route eligibility determinations through an HR partner - do not\n  confirm eligibility informally"
+        }
+      ],
+      "answer_patterns": [
+        "(?:12 months|one year|1 year)",
+        "1,?250",
+        "local law",
+        "HR"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_eligibility_4",
+      "question": "Is one year alone enough for protected leave, or are hours and local law relevant?",
+      "fact_group": "leave_eligibility",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees become eligible for protected leave after 12 months of employment\n  and 1,250 hours worked in the prior 12 months (or per local law, whichever\n  is more generous)"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Always route eligibility determinations through an HR partner - do not\n  confirm eligibility informally"
+        }
+      ],
+      "answer_patterns": [
+        "(?:12 months|one year|1 year)",
+        "1,?250",
+        "local law",
+        "HR"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_process_1",
+      "question": "Who should I notify about leave, and when will HR confirm eligibility?",
+      "fact_group": "leave_process",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees should notify their HR partner and manager as soon as the need\n  for leave is known"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- HR will provide required paperwork and confirm eligibility within 5\n  business days"
+        }
+      ],
+      "answer_patterns": [
+        "HR",
+        "manager",
+        "(?:5|five) business days"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_process_2",
+      "question": "What is the leave notice process and the HR paperwork timeline?",
+      "fact_group": "leave_process",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees should notify their HR partner and manager as soon as the need\n  for leave is known"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- HR will provide required paperwork and confirm eligibility within 5\n  business days"
+        }
+      ],
+      "answer_patterns": [
+        "HR",
+        "manager",
+        "(?:5|five) business days"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_process_3",
+      "question": "Does HR provide leave paperwork and confirm eligibility within five business days?",
+      "fact_group": "leave_process",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees should notify their HR partner and manager as soon as the need\n  for leave is known"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- HR will provide required paperwork and confirm eligibility within 5\n  business days"
+        }
+      ],
+      "answer_patterns": [
+        "HR",
+        "manager",
+        "(?:5|five) business days"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "leave_process_4",
+      "question": "Explain leave notification to the manager and HR, including the five-business-day timeline.",
+      "fact_group": "leave_process",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- Employees should notify their HR partner and manager as soon as the need\n  for leave is known"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "- HR will provide required paperwork and confirm eligibility within 5\n  business days"
+        }
+      ],
+      "answer_patterns": [
+        "HR",
+        "manager",
+        "(?:5|five) business days"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_birth_1",
+      "question": "What paid parental leave duration applies to full-time birthing parents?",
+      "fact_group": "parental_birth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Birthing parents: up to 16 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:16|sixteen) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_birth_2",
+      "question": "Can a full-time birthing parent receive up to 16 weeks of paid parental leave?",
+      "fact_group": "parental_birth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Birthing parents: up to 16 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:16|sixteen) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_birth_3",
+      "question": "Explain the birthing-parent duration and full-time eligibility rule.",
+      "fact_group": "parental_birth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Birthing parents: up to 16 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:16|sixteen) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_birth_4",
+      "question": "How many paid weeks does the parental policy allow a full-time birthing parent?",
+      "fact_group": "parental_birth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Birthing parents: up to 16 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:16|sixteen) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_nonbirth_1",
+      "question": "What paid leave is available to a full-time non-birthing parent?",
+      "fact_group": "parental_nonbirth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Non-birthing parents: up to 8 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:8|eight) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_nonbirth_2",
+      "question": "How many weeks can a full-time non-birthing parent take under the parental policy?",
+      "fact_group": "parental_nonbirth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Non-birthing parents: up to 8 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:8|eight) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_nonbirth_3",
+      "question": "Explain the up-to-eight-week policy for full-time non-birthing parents.",
+      "fact_group": "parental_nonbirth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Non-birthing parents: up to 8 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:8|eight) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "parental_nonbirth_4",
+      "question": "Does the parental policy provide up to eight paid weeks for full-time non-birthing parents?",
+      "fact_group": "parental_nonbirth",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "- Non-birthing parents: up to 8 weeks paid leave"
+        }
+      ],
+      "answer_patterns": [
+        "(?:8|eight) weeks",
+        "up to",
+        "full.time"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_report_1",
+      "question": "How can an employee report harassment, including anonymously?",
+      "fact_group": "harassment_report",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Employees can report concerns to their manager, HR partner, or through the\n  confidential ethics reporting line, including anonymously"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics",
+        "anonym"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_report_2",
+      "question": "What manager, HR and confidential ethics channels exist for harassment reports?",
+      "fact_group": "harassment_report",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Employees can report concerns to their manager, HR partner, or through the\n  confidential ethics reporting line, including anonymously"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics",
+        "anonym"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_report_3",
+      "question": "Can I anonymously report discrimination through the ethics reporting line?",
+      "fact_group": "harassment_report",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Employees can report concerns to their manager, HR partner, or through the\n  confidential ethics reporting line, including anonymously"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics",
+        "anonym"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_report_4",
+      "question": "Explain the harassment reporting options and whether anonymous reports are permitted.",
+      "fact_group": "harassment_report",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Employees can report concerns to their manager, HR partner, or through the\n  confidential ethics reporting line, including anonymously"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics",
+        "anonym"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_retaliation_1",
+      "question": "Is retaliation prohibited for good-faith harassment reports?",
+      "fact_group": "harassment_retaliation",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Retaliation against anyone who reports in good faith, or who participates\n  in an investigation, is strictly prohibited and will result in discipline"
+        }
+      ],
+      "answer_patterns": [
+        "retaliat",
+        "(?:prohibit|not allowed|forbid)",
+        "good faith|good.faith"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_retaliation_2",
+      "question": "What protection applies against retaliation after reporting harassment in good faith?",
+      "fact_group": "harassment_retaliation",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Retaliation against anyone who reports in good faith, or who participates\n  in an investigation, is strictly prohibited and will result in discipline"
+        }
+      ],
+      "answer_patterns": [
+        "retaliat",
+        "(?:prohibit|not allowed|forbid)",
+        "good faith|good.faith"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_retaliation_3",
+      "question": "Can an employee be retaliated against for a good-faith discrimination report?",
+      "fact_group": "harassment_retaliation",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Retaliation against anyone who reports in good faith, or who participates\n  in an investigation, is strictly prohibited and will result in discipline"
+        }
+      ],
+      "answer_patterns": [
+        "retaliat",
+        "(?:prohibit|not allowed|forbid)",
+        "good faith|good.faith"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "harassment_retaliation_4",
+      "question": "Explain the non-retaliation rule for good-faith harassment reporting and investigations.",
+      "fact_group": "harassment_retaliation",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "- Retaliation against anyone who reports in good faith, or who participates\n  in an investigation, is strictly prohibited and will result in discipline"
+        }
+      ],
+      "answer_patterns": [
+        "retaliat",
+        "(?:prohibit|not allowed|forbid)",
+        "good faith|good.faith"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "accommodation_docs_1",
+      "question": "Will medical documentation for a workplace accommodation be kept confidential?",
+      "fact_group": "accommodation_docs",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "workplace-accommodation-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "workplace-accommodation-policy",
+          "text": "- Medical documentation may be requested but is handled confidentially and\n  stored separately from the employee's general personnel file"
+        }
+      ],
+      "answer_patterns": [
+        "confidential",
+        "separat",
+        "(?:personnel|employee.*file)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "accommodation_docs_2",
+      "question": "Is accommodation medical documentation stored separately from the general personnel file?",
+      "fact_group": "accommodation_docs",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "workplace-accommodation-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "workplace-accommodation-policy",
+          "text": "- Medical documentation may be requested but is handled confidentially and\n  stored separately from the employee's general personnel file"
+        }
+      ],
+      "answer_patterns": [
+        "confidential",
+        "separat",
+        "(?:personnel|employee.*file)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "accommodation_docs_3",
+      "question": "How is medical documentation handled during workplace accommodation review?",
+      "fact_group": "accommodation_docs",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "workplace-accommodation-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "workplace-accommodation-policy",
+          "text": "- Medical documentation may be requested but is handled confidentially and\n  stored separately from the employee's general personnel file"
+        }
+      ],
+      "answer_patterns": [
+        "confidential",
+        "separat",
+        "(?:personnel|employee.*file)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "accommodation_docs_4",
+      "question": "Explain confidentiality and separate storage for accommodation medical records.",
+      "fact_group": "accommodation_docs",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "workplace-accommodation-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "workplace-accommodation-policy",
+          "text": "- Medical documentation may be requested but is handled confidentially and\n  stored separately from the employee's general personnel file"
+        }
+      ],
+      "answer_patterns": [
+        "confidential",
+        "separat",
+        "(?:personnel|employee.*file)"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "conduct_reporting_1",
+      "question": "Where should concerns about workplace conduct be escalated?",
+      "fact_group": "conduct_reporting",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "code-of-conduct"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "code-of-conduct",
+          "text": "- Escalate concerns about conduct through your manager, HR partner, or the\n  confidential ethics reporting line"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "conduct_reporting_2",
+      "question": "What reporting channels does the Code of Conduct provide?",
+      "fact_group": "conduct_reporting",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "code-of-conduct"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "code-of-conduct",
+          "text": "- Escalate concerns about conduct through your manager, HR partner, or the\n  confidential ethics reporting line"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "conduct_reporting_3",
+      "question": "Can I raise conduct concerns through a manager, HR partner or confidential ethics line?",
+      "fact_group": "conduct_reporting",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "code-of-conduct"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "code-of-conduct",
+          "text": "- Escalate concerns about conduct through your manager, HR partner, or the\n  confidential ethics reporting line"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "conduct_reporting_4",
+      "question": "Who can receive a Code of Conduct concern?",
+      "fact_group": "conduct_reporting",
+      "expected": "supported",
+      "expected_doc_ids": [
+        "code-of-conduct"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "code-of-conduct",
+          "text": "- Escalate concerns about conduct through your manager, HR partner, or the\n  confidential ethics reporting line"
+        }
+      ],
+      "answer_patterns": [
+        "manager",
+        "HR",
+        "ethics"
+      ],
+      "retrieval_evaluable": true
+    },
+    {
+      "id": "office_pets_1",
+      "question": "Can I bring an iguana to the office?",
+      "fact_group": "office_pets",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "office_pets_2",
+      "question": "Are office iguanas permitted?",
+      "fact_group": "office_pets",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "office_pets_3",
+      "question": "May my pet iguana accompany me at the office?",
+      "fact_group": "office_pets",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "office_pets_4",
+      "question": "What is the office policy for bringing an iguana?",
+      "fact_group": "office_pets",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "pet_insurance_1",
+      "question": "Does the company provide pet insurance benefits?",
+      "fact_group": "pet_insurance",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "pet_insurance_2",
+      "question": "Does our benefits policy cover pet insurance?",
+      "fact_group": "pet_insurance",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "pet_insurance_3",
+      "question": "Can I enroll my pet in company insurance?",
+      "fact_group": "pet_insurance",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "pet_insurance_4",
+      "question": "Is pet health insurance included in employee benefits?",
+      "fact_group": "pet_insurance",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "relocation_cost_1",
+      "question": "Does my manager reimburse relocation expenses?",
+      "fact_group": "relocation_cost",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "relocation_cost_2",
+      "question": "Does the expense policy reimburse relocation costs?",
+      "fact_group": "relocation_cost",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "relocation_cost_3",
+      "question": "Is the cost of moving to another state reimbursable?",
+      "fact_group": "relocation_cost",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "relocation_cost_4",
+      "question": "Can I claim reimbursement for relocating my home?",
+      "fact_group": "relocation_cost",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "bereavement_1",
+      "question": "Do I get bereavement leave?",
+      "fact_group": "bereavement",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "bereavement_2",
+      "question": "How many bereavement days are available?",
+      "fact_group": "bereavement",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "bereavement_3",
+      "question": "What paid leave is provided for bereavement?",
+      "fact_group": "bereavement",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "bereavement_4",
+      "question": "Is there a bereavement entitlement in the available policies?",
+      "fact_group": "bereavement",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": true,
+      "expected_reason": "No supplied policy establishes a rule for this topic."
+    },
+    {
+      "id": "personal_pto_1",
+      "question": "What is my current PTO balance?",
+      "fact_group": "personal_pto",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": false,
+      "expected_reason": "Authoritative personal balance and an update executor are not configured."
+    },
+    {
+      "id": "personal_pto_2",
+      "question": "What's my current PTO balance?",
+      "fact_group": "personal_pto",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": false,
+      "expected_reason": "Authoritative personal balance and an update executor are not configured."
+    },
+    {
+      "id": "personal_pto_3",
+      "question": "How many PTO hours do I have?",
+      "fact_group": "personal_pto",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": false,
+      "expected_reason": "Authoritative personal balance and an update executor are not configured."
+    },
+    {
+      "id": "personal_pto_4",
+      "question": "Please confirm that you increased my PTO balance to 80 hours.",
+      "fact_group": "personal_pto",
+      "expected": "no_information",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "answer_patterns": [],
+      "retrieval_evaluable": false,
+      "expected_reason": "Authoritative personal balance and an update executor are not configured."
+    }
+  ]
+}

@@ -1,0 +1,384 @@
+{
+  "description": "Fixed, independently authored policy-source and complete-condition expectations. These questions are evaluation inputs only, never production routing rules.",
+  "approval_limit": "Supplied synthetic source files have no authoritative approval, version or effective-date registry.",
+  "questions": [
+    {
+      "id": "pto_direct",
+      "category": "direct",
+      "question": "How many PTO hours can I carry over?",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "source_rationale": "PTO / Accrual states both the cap and the local-law exception."
+    },
+    {
+      "id": "pto_paraphrase",
+      "category": "paraphrase",
+      "question": "Does my unused paid time off roll into next year?",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "source_rationale": "Paid time off is the source title; rollover is governed by its Accrual clauses."
+    },
+    {
+      "id": "pto_synonym",
+      "category": "synonym",
+      "question": "How much unused vacation can I keep for next year?",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "source_rationale": "Vacation here is a plain-language synonym for paid time off; this tests vocabulary, not a personal balance."
+    },
+    {
+      "id": "pto_conditions",
+      "category": "multiple_conditions",
+      "question": "Does PTO over 40 hours expire, and are there exceptions?",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "Carryover balances above 40 hours are forfeited unless local law requires payout"
+        }
+      ],
+      "source_rationale": "The forfeiture provision cannot be separated from its local-law qualification."
+    },
+    {
+      "id": "pto_request",
+      "category": "direct",
+      "question": "How far in advance must I request PTO, and who approves it?",
+      "expected_doc_ids": [
+        "pto-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "Submit requests through Workday at least 2 weeks in advance for planned time off"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "Manager approval is required before time off is confirmed"
+        }
+      ],
+      "source_rationale": "PTO / Requesting Time Off gives notice and approval conditions."
+    },
+    {
+      "id": "remote_direct",
+      "category": "direct",
+      "question": "Can I relocate to another state while working remotely?",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        },
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "source_rationale": "Remote Work / Eligible Roles and Location Changes contain the available conditions; no automatic approval is inferred."
+    },
+    {
+      "id": "remote_paraphrase",
+      "category": "paraphrase",
+      "question": "Do I need to tell HR before moving to another state?",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        }
+      ],
+      "source_rationale": "The only source-authored relocation instruction is in Remote Work / Location Changes."
+    },
+    {
+      "id": "remote_synonym",
+      "category": "synonym",
+      "question": "I work from home. Who should I tell before I change my work location?",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        },
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "source_rationale": "Work from home maps to remote work; Location Changes and Eligible Roles are relevant."
+    },
+    {
+      "id": "remote_zone",
+      "category": "direct",
+      "question": "Which roles can work remotely and from what approved zone?",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "source_rationale": "Remote Work / Eligible Roles specifies remote eligibility and an approved US Zone."
+    },
+    {
+      "id": "expense_receipt",
+      "category": "direct",
+      "question": "When do I need an itemized receipt for an expense reimbursement?",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "Submit expenses within 30 days of the expense date"
+        },
+        {
+          "doc_id": "expense-policy",
+          "text": "Include an itemized receipt for any expense over $25"
+        }
+      ],
+      "source_rationale": "Expense / Submission sets the receipt threshold and submission timing."
+    },
+    {
+      "id": "expense_appeal",
+      "category": "paraphrase",
+      "question": "My submitted expense was rejected. How long do I have to appeal?",
+      "expected_doc_ids": [
+        "expense-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "expense-policy",
+          "text": "If a submitted expense is rejected, the employee can appeal to their\n  manager and People Ops within 14 days of the rejection"
+        }
+      ],
+      "source_rationale": "Expense / Disputes supplies the appeal recipients and deadline."
+    },
+    {
+      "id": "benefits_health",
+      "category": "direct",
+      "question": "When does health coverage begin after I am hired?",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "Medical, dental, and vision plans are available starting the first day of\n  the month following hire date"
+        }
+      ],
+      "source_rationale": "Benefits / Health Coverage gives a date rule rather than a personal enrollment decision."
+    },
+    {
+      "id": "benefits_retirement",
+      "category": "direct",
+      "question": "When am I eligible for the retirement company match?",
+      "expected_doc_ids": [
+        "benefits-overview"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "benefits-overview",
+          "text": "401(k) with company match is available after 90 days of employment"
+        }
+      ],
+      "source_rationale": "Benefits / Retirement is the only retirement-match provision."
+    },
+    {
+      "id": "leave_conditions",
+      "category": "multiple_conditions",
+      "question": "Does medical leave after one year have an hours requirement?",
+      "expected_doc_ids": [
+        "leave-of-absence-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "Employees become eligible for protected leave after 12 months of employment\n  and 1,250 hours worked in the prior 12 months (or per local law, whichever\n  is more generous)"
+        },
+        {
+          "doc_id": "leave-of-absence-policy",
+          "text": "Always route eligibility determinations through an HR partner - do not\n  confirm eligibility informally"
+        }
+      ],
+      "source_rationale": "Leave of Absence / Eligibility and Job Protection preserve hours, time, local-law qualification and HR determination."
+    },
+    {
+      "id": "parental_duration",
+      "category": "direct",
+      "question": "How many weeks of parental leave can a non-birthing parent take?",
+      "expected_doc_ids": [
+        "parental-leave-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "All full-time employees are eligible for parental leave regardless of\n  tenure, for birth, adoption, or foster placement"
+        },
+        {
+          "doc_id": "parental-leave-policy",
+          "text": "Non-birthing parents: up to 8 weeks paid leave"
+        }
+      ],
+      "source_rationale": "Parental Leave / Eligibility and Duration contain the applicable general conditions."
+    },
+    {
+      "id": "harassment_report",
+      "category": "overlapping_keywords",
+      "question": "How can I anonymously report harassment without retaliation?",
+      "expected_doc_ids": [
+        "harassment-reporting-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "Employees can report concerns to their manager, HR partner, or through the\n  confidential ethics reporting line, including anonymously"
+        },
+        {
+          "doc_id": "harassment-reporting-policy",
+          "text": "Retaliation against anyone who reports in good faith, or who participates\n  in an investigation, is strictly prohibited and will result in discipline"
+        }
+      ],
+      "source_rationale": "Harassment reporting covers anonymity; the Code of Conduct is separately acceptable for its non-retaliation provision.",
+      "acceptable_doc_ids": [
+        "harassment-reporting-policy",
+        "code-of-conduct"
+      ]
+    },
+    {
+      "id": "accommodation_documentation",
+      "category": "direct",
+      "question": "Will medical documentation for a workplace accommodation be kept confidential?",
+      "expected_doc_ids": [
+        "workplace-accommodation-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "workplace-accommodation-policy",
+          "text": "Medical documentation may be requested but is handled confidentially and\n  stored separately from the employee's general personnel file"
+        }
+      ],
+      "source_rationale": "Workplace Accommodation / Interactive Process specifies documentation handling."
+    },
+    {
+      "id": "multiple_topics",
+      "category": "multiple_clauses",
+      "question": "How much PTO carries over, and must I tell HR before moving states for remote work?",
+      "expected_doc_ids": [
+        "pto-policy",
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "pto-policy",
+          "text": "Unused PTO carries over up to 40 hours into the next calendar year"
+        },
+        {
+          "doc_id": "pto-policy",
+          "text": "Carryover balances above 40 hours are forfeited unless local law requires payout"
+        },
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Employees must notify HR before relocating, since it can affect payroll\n  tax withholding, benefits eligibility, and compensation zone"
+        },
+        {
+          "doc_id": "remote-work-policy",
+          "text": "Roles designated remote-eligible may work from an approved US Zone"
+        }
+      ],
+      "source_rationale": "The two independent clauses require PTO and Remote Work sources."
+    },
+    {
+      "id": "remote_new_hire_overlap",
+      "category": "overlapping_keywords",
+      "question": "As a new hire, when do I receive a laptop for remote work?",
+      "expected_doc_ids": [
+        "remote-work-policy"
+      ],
+      "required_passages": [
+        {
+          "doc_id": "remote-work-policy",
+          "text": "New hires receive a laptop and standard peripherals within the first week"
+        }
+      ],
+      "source_rationale": "Remote Work / Equipment contains the laptop rule; unrelated new-hire benefit enrollment is not the requested subject."
+    },
+    {
+      "id": "unknown_iguana",
+      "category": "unsupported",
+      "question": "Can I bring an iguana to the office?",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "source_rationale": "None of the nine supplied policies addresses office pets."
+    },
+    {
+      "id": "unknown_pet_benefits",
+      "category": "unsupported_overlap",
+      "question": "Does the company provide pet insurance benefits?",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "source_rationale": "Benefits lists medical, dental, vision and retirement; it contains no pet-insurance provision."
+    },
+    {
+      "id": "unknown_relocation_expense",
+      "category": "unsupported_overlap",
+      "question": "Does my manager reimburse relocation expenses?",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "source_rationale": "Expenses describes submission, ordinary travel and disputes; Remote Work requires relocation notice. Neither establishes relocation reimbursement."
+    },
+    {
+      "id": "unknown_bereavement",
+      "category": "unsupported_overlap",
+      "question": "Do I get bereavement leave?",
+      "expected_doc_ids": [],
+      "required_passages": [],
+      "source_rationale": "No supplied source establishes bereavement leave; shared leave headings are insufficient evidence."
+    }
+  ]
+}

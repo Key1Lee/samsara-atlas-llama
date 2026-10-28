@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "status": "Completed",
+    "run_id": "2a588739cd154ac99fe9013d2bec9efa",
+    "started_at": "2026-10-27T11:01:48.121357+00:00",
+    "updated_at": "2026-10-27T11:13:15.776407+00:00",
+    "metadata": {
+      "hardware": {
+        "os": "Darwin",
+        "machine": "arm64",
+        "logical_cpus": 10,
+        "memory_bytes": "34359738368",
+        "cpu": "Apple M1 Max"
+      },
+      "deployment": "Existing local API, SQLite and Ollama on this host; competing local activity is not controlled.",
+      "provider": "ollama",
+      "model": "llama3.2",
+      "fixture_sha256": "ae10ca623b046e84bc8192b032607514c3f4fe2c466c3b5fbf38504c8cfd0ca8",
+      "source_sha256": {
+        "benefits-overview.md": "7f545f16f202cb0c979cebd0f470d73b0eeeb155a1defd9c1c64c30cc6421029",
+        "code-of-conduct.md": "2c03c9a67ecdf595e9195431d7e7070b2579e93c21595bf1496d21b84a1773ed",
+        "expense-policy.md": "021a2df13824f7f8ac00c3e39e3df609f30feff36d7e8f2299c804e9b0293186",
+        "harassment-reporting-policy.md": "daf6a194b4ef366a7ac0b9b9d3990f4a2286c9a4a16d07aedc85d181a8612579",
+        "leave-of-absence-policy.md": "f67c3719a3e946f21c63fb638547687373c51ae10569117564a49d0634ad4ba9",
+        "parental-leave-policy.md": "b1fd4dd09d0c4df9425250c66a29a9a94b432df34c7974b93c75a84f0829dfbb",
+        "pto-policy.md": "8628608e32b3910cfe178068d7cca68620dd8891cd8a8ea170fa9a1dc1a243b5",
+        "remote-work-policy.md": "150662b8b44259b3ea97d07ae78630e46fdc93792988a921e5d1e4e7a687b052",
+        "workplace-accommodation-policy.md": "3dffff723a6b7513dc5bab01581555b2cc97bdf82690af5f9958584aaaa27341"
+      },
+      "code_sha256": {
+        "app/tools/retrieval.py": "b7f0e0dd1c037c934ad31add82d674fb115a668b070183c6dc6c33038736024c",
+        "app/providers/ollama.py": "0d762dc56ae8a6465cce515c7cb5682ecb3efdfccfb4a96b4a8e186c80062abc"
+      },
+      "model_digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "max_inflight": 8,
+      "send_offset_method": "Target slot plus measured schedule lag; reconstructed for this first run."
+    },
+    "metrics": {
+      "planned_questions": 100,
+      "attempted": 100,
+      "target_rpm": 10,
+      "elapsed_seconds": 687.66,
+      "completed": 50,
+      "workflow_success_percent": 50.0,
+      "answer_checks_passed": 27,
+      "answer_checks_failed": 23,
+      "no_information_checks_passed": 20,
+      "answer_contract_percent": 27.0,
+      "retrieval_checked": 96,
+      "retrieval_passed": 71,
+      "retrieval_percent": 74.0,
+      "http_errors": 50,
+      "http_429": 0,
+      "generation_failures": 50,
+      "application_failures": 0,
+      "persistence_checks_passed": 100,
+      "p50_seconds": 61.676,
+      "p95_seconds": 86.098,
+      "max_seconds": 87.555,
+      "completed_per_minute": 4.36,
+      "observed_offered_rpm": 9.09,
+      "max_schedule_lag_seconds": 112.03
+    }
+  }
+}

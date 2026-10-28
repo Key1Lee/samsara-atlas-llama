@@ -11,6 +11,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.storage.database import init_db
 from app.api.routes import router
+from app.middleware.rate_limit import employee_daily_limit
+from app.middleware.request_id import correlate_request
 
 
 @asynccontextmanager
@@ -23,6 +25,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Samsara Atlas", lifespan=lifespan)
+app.middleware("http")(employee_daily_limit)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -30,4 +33,5 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.middleware("http")(correlate_request)
 app.include_router(router, prefix="", tags=["cases"])

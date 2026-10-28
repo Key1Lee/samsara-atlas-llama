@@ -1,0 +1,9 @@
+[
+  {"question":"How many PTO hours can I carry over?","intent":"PTO_POLICY"},
+  {"question":"What's the PTO rollover limit?","intent":"PTO_POLICY"},
+  {"question":"Can I relocate to another state while working remotely?","intent":"REMOTE_WORK"},
+  {"question":"Do I need to tell HR before moving to another state?","intent":"REMOTE_WORK"},
+  {"question":"How much PTO do I personally have left?","intent":null},
+  {"question":"What is the PTO payout policy when leaving?","intent":null},
+  {"question":"What benefits do new hires receive?","intent":null}
+]

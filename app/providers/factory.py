@@ -2,6 +2,7 @@ import os
 
 from app.providers.base import ModelProvider
 from app.providers.stub import StubProvider
+from app.providers.errors import ProviderConfigurationError
 
 
 def get_provider() -> ModelProvider:
@@ -16,5 +17,5 @@ def get_provider() -> ModelProvider:
             from app.providers.local_stub import LocalStubProvider
             return LocalStubProvider()
         except ImportError:
-            return StubProvider()  # silent fallback on misconfiguration, see P022
-    return StubProvider()
+            raise ProviderConfigurationError() from None
+    raise ProviderConfigurationError()

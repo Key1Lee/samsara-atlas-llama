@@ -9,7 +9,7 @@ os.environ["DOCS_DIR"] = os.path.join(os.path.dirname(os.path.dirname(__file__))
 @pytest.fixture
 def client(db_session):
     from app.main import app
-    return TestClient(app)
+    return TestClient(app, headers={"X-Employee-ID": "E10234"})
 
 
 @pytest.fixture

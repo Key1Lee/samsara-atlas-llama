@@ -11,8 +11,16 @@
         "employment_status": "active"
       },
       "last_activities": [
-        {"type": "case", "date": "2026-06-02", "summary": "Asked about PTO carryover policy"},
-        {"type": "case", "date": "2026-02-11", "summary": "Onboarding - benefits enrollment question"}
+        {
+          "type": "case",
+          "date": "2026-06-02",
+          "summary": "Asked about PTO carryover policy"
+        },
+        {
+          "type": "case",
+          "date": "2026-02-11",
+          "summary": "Onboarding - benefits enrollment question"
+        }
       ]
     },
     {
@@ -26,8 +34,16 @@
         "employment_status": "active"
       },
       "last_activities": [
-        {"type": "case", "date": "2026-07-20", "summary": "Requested leave of absence paperwork"},
-        {"type": "case", "date": "2026-05-03", "summary": "Asked about parental leave eligibility timeline"}
+        {
+          "type": "case",
+          "date": "2026-07-20",
+          "summary": "Requested leave of absence paperwork"
+        },
+        {
+          "type": "case",
+          "date": "2026-05-03",
+          "summary": "Asked about parental leave eligibility timeline"
+        }
       ]
     },
     {
@@ -41,9 +57,1278 @@
         "employment_status": "active"
       },
       "last_activities": [
-        {"type": "case", "date": "2026-08-14", "summary": "Expense reimbursement dispute for travel"},
-        {"type": "case", "date": "2026-03-22", "summary": "Onboarding - remote work equipment request"}
+        {
+          "type": "case",
+          "date": "2026-08-14",
+          "summary": "Expense reimbursement dispute for travel"
+        },
+        {
+          "type": "case",
+          "date": "2026-03-22",
+          "summary": "Onboarding - remote work equipment request"
+        }
       ]
+    },
+    {
+      "employee_id": "E12001",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 0.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12002",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 0.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12003",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 0.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12004",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 0.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12005",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 0.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12006",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 1.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12007",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 1.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12008",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 1.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12009",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 1.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12010",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 10",
+        "tenure_years": 1.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12011",
+      "metadata": {
+        "department": "Finance",
+        "level": "P40",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 11",
+        "tenure_years": 1.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12012",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P50",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 12",
+        "tenure_years": 1.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12013",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 1.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12014",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 1.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12015",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 1.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12016",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 2.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12017",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 2.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12018",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 2.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12019",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 2.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12020",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 2.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12021",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 2.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12022",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 10",
+        "tenure_years": 2.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12023",
+      "metadata": {
+        "department": "Finance",
+        "level": "P40",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 11",
+        "tenure_years": 2.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12024",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P50",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 12",
+        "tenure_years": 2.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12025",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 2.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12026",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 3.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12027",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 3.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12028",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 3.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12029",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 3.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12030",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 3.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12031",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 3.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12032",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 3.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12033",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 3.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12034",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 10",
+        "tenure_years": 3.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12035",
+      "metadata": {
+        "department": "Finance",
+        "level": "P40",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 11",
+        "tenure_years": 3.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12036",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P50",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 12",
+        "tenure_years": 4.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12037",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 4.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12038",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 4.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12039",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 4.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12040",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 4.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12041",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 4.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12042",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 4.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12043",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 4.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12044",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 4.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12045",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 4.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12046",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 10",
+        "tenure_years": 5.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12047",
+      "metadata": {
+        "department": "Finance",
+        "level": "P40",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 11",
+        "tenure_years": 5.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12048",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P50",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 12",
+        "tenure_years": 5.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12049",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 5.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12050",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 5.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12051",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 5.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12052",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 5.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12053",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 5.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12054",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 5.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12055",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 5.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12056",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 6.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12057",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 6.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12058",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 10",
+        "tenure_years": 6.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12059",
+      "metadata": {
+        "department": "Finance",
+        "level": "P40",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 11",
+        "tenure_years": 6.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12060",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P50",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 12",
+        "tenure_years": 6.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12061",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 6.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12062",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 6.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12063",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 6.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12064",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 6.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12065",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 6.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12066",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 7.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12067",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 7.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12068",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 7.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12069",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 7.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12070",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 10",
+        "tenure_years": 7.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12071",
+      "metadata": {
+        "department": "Finance",
+        "level": "P40",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 11",
+        "tenure_years": 0.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12072",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P50",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 12",
+        "tenure_years": 0.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12073",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 0.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12074",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 0.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12075",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 0.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12076",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 1.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12077",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 1.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12078",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 1.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12079",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 1.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12080",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 1.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12081",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 1.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12082",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 10",
+        "tenure_years": 1.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12083",
+      "metadata": {
+        "department": "Finance",
+        "level": "P40",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 11",
+        "tenure_years": 1.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12084",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P50",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 12",
+        "tenure_years": 1.8,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12085",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P20",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 1.9,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12086",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 02",
+        "tenure_years": 2.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12087",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P40",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 03",
+        "tenure_years": 2.1,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12088",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P50",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 04",
+        "tenure_years": 2.2,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12089",
+      "metadata": {
+        "department": "Finance",
+        "level": "P20",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 05",
+        "tenure_years": 2.3,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12090",
+      "metadata": {
+        "department": "Customer Support",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 06",
+        "tenure_years": 2.4,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12091",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P40",
+        "location": "San Francisco Bay Area",
+        "manager": "Synthetic Manager 07",
+        "tenure_years": 2.5,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12092",
+      "metadata": {
+        "department": "Sales",
+        "level": "P50",
+        "location": "Remote - US Zone 2",
+        "manager": "Synthetic Manager 08",
+        "tenure_years": 2.6,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12093",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P20",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 09",
+        "tenure_years": 2.7,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12094",
+      "metadata": {
+        "department": "Engineering",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 1.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12095",
+      "metadata": {
+        "department": "Sales",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 1.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12096",
+      "metadata": {
+        "department": "Field Operations",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 1.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
+    },
+    {
+      "employee_id": "E12097",
+      "metadata": {
+        "department": "People Operations",
+        "level": "P30",
+        "location": "Remote - US Zone 3",
+        "manager": "Synthetic Manager 01",
+        "tenure_years": 1.0,
+        "employment_status": "active",
+        "synthetic": true
+      },
+      "last_activities": []
     }
   ]
 }

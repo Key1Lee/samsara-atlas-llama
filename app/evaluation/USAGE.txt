@@ -1,0 +1,88 @@
+Atlas offline response evaluation (v1)
+
+The employee API never schedules semantic evaluation. No answer or HR approval
+is changed by this package. Llama generation and BM25 ranking are preserved.
+Default: ATLAS_EVAL_ENABLED=0; ATLAS_EVAL_DIAGNOSTICS=0.
+
+From the repository root with the existing .venv:
+1. Inspect local model metadata: curl http://127.0.0.1:11434/api/tags
+2. Select local model gpt-oss:20b and its FULL installed SHA-256 digest.
+3. Run preflight (no inference):
+   ATLAS_EVAL_ENABLED=1 ATLAS_EVAL_DIGEST=<digest> .venv/bin/python -m app.evaluation.cli --output /private/owner-only/probe probe
+4. Deterministic fixture baseline:
+   .venv/bin/python -m app.evaluation.cli --output /private/owner-only/A dataset --split dev
+5. Local semantic comparison, same fixture split:
+   ATLAS_EVAL_ENABLED=1 ATLAS_EVAL_DIGEST=<digest> .venv/bin/python -m app.evaluation.cli --output /private/owner-only/B dataset --split dev --semantic
+6. Held-out diagnostic fixtures: replace --split dev with --split test. The paired
+   variants are correlated; this is not a representative real-world accuracy set.
+7. Read-only historical evidence diagnosis:
+   .venv/bin/python -m app.evaluation.cli --output /private/owner-only/history cases --database /path/to/synthetic-copy.db --docs /authorized/policy-directory
+   Add --semantic for completed cases, optionally --case-id N (repeatable),
+   --employee-id ID and --limit N. OS file authorization is required. There is
+   no API route exposing these artifacts; do not serve the artifact directory.
+8. Export versioned JSON Schema:
+   .venv/bin/python -m app.evaluation.cli --output /private/owner-only/schema schema
+
+Semantic feature flag, model name, digest, timeout (1–300s) and queue capacity
+(1–32) are environment configurable in .env.example. CLI does not load .env
+implicitly. Single inference worker per CLI process, at most queue capacity
+in-flight/pending futures, explicit backpressure. Run one evaluator CLI at a time
+on the shared Ollama runtime to avoid contention with generation. Endpoint must
+be loopback HTTP; environment proxies and redirects are disabled. No tools or
+network-capable model functions are supplied. No automatic retries or cloud
+fallback. Full model digest is checked before each inference, not guessed from
+a mutable tag. Input is rejected above a byte budget, never silently clipped;
+this bound is not an exact tokenizer/context-window proof. Output token cap is
+2048. Refusal/length/timeout/invalid evidence are distinct evaluator outcomes.
+
+Cases with no completed response are diagnosed from execution facts and never
+given an invented semantic score. Historical ValueError is unresolved unless
+a more specific recorded rule exists. Nonempty retrieval, a lexical topic match,
+and exact quote linkage do not prove entitlement, relevance or legal applicability.
+Current source access checks use only selected snapshots matching the explicitly
+supplied local corpus; changed/missing policies cannot silently become authorized
+sources. Historical BM25 scores were not saved and remain null, never reconstructed
+as if recorded. Whole policies are the existing retrieval units; :whole identifiers
+are explicit spans, not an invented historical chunking pipeline.
+
+Privacy: source passages/questions/answers are sent only to the configured local
+runtime. They remain in process memory. No raw model response, reasoning, original
+question or source text is written into new result artifacts. Reports retain
+fingerprints, exact span references, enums, counts and safe execution metadata.
+Directories must be owner-only 0700 and result files are atomically written 0600;
+symlink roots/targets are rejected. No original case evidence is modified.
+Do not add raw retention without a separate approved policy. Metadata artifacts
+can be explicitly pruned with ArtifactStore(path).prune(days=7); no unrelated
+files or historical case database are pruned. Secure handling and retention of
+the pre-existing case database remain the operator's responsibility.
+
+Optional future workflow instrumentation: ATLAS_EVAL_DIAGNOSTICS=1 on a development
+API process records hashed prompts/schema/response refs, BM25 ranks/scores, parsed
+response hash, completion status/token counts/timing when available, and safe
+failure locations. It never calls GPT-OSS from the employee request path.
+Unrecorded generation model digest/runtime/resource metrics stay unknown.
+Only new synthetic requests can produce new diagnostics; old data is not backfilled.
+
+Calibration labels: fixture semantic labels are synthetic author expectations,
+NOT independent human labels. The metrics distinguish evaluator coverage from
+agreement among accepted judgments, and retain evaluator errors in the report.
+Optional dataset --human-labels /private/labels.json accepts:
+{
+  "version": "atlas.human-calibration.v1",
+  "dataset_sha256": "<exact dataset content fingerprint>",
+  "results": [{"case_id": 101, "concerns": ["grounding"],
+               "reviewer_reference": "<authorized review evidence reference>",
+               "reviewed_at": "<timestamp>"}]
+}
+Matching human labels enable per-category TP/FP/FN/TN, precision, recall and
+sample disagreement. Labels are operator supplied evidence, not authentication
+of reviewer identity and never an HR approval transaction. No accuracy claim is
+valid without independent labels and adequate evaluator coverage.
+
+Rollback: feature flags off immediately disable new work on a restarted dev
+process. The employee request path does not import or call the semantic harness.
+Use the task's guarded rollback script to restore the exact pre-task source files;
+do not git reset a checkout with existing unrelated modifications. No migration
+or database rollback is needed. GPT-OSS can remain installed; do not remove shared
+models without checking their other uses. This harness has been tested locally,
+not production deployed or validated as an autonomous reviewer.

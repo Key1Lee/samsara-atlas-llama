@@ -1,23 +1,25 @@
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, StringConstraints
+
+NonEmptyText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, strict=True)]
+IdempotencyKey = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=255, strict=True)]
 
 
 class CaseInputs(BaseModel):
-    employee_id: str
-    case_transcript: str
+    employee_id: NonEmptyText
+    case_transcript: NonEmptyText
     tone: Literal["empathetic", "direct", "formal"]
 
 
 class StructuredResponse(BaseModel):
-    subject: str
-    body: str
+    subject: NonEmptyText
+    body: NonEmptyText
     tone: Literal["empathetic", "direct", "formal"]
-    cited_snippets: list[str]
+    cited_snippets: list[NonEmptyText]
 
 
 class ExtractActionsOutput(BaseModel):
-    """Schema for summarize_and_extract_actions - NOT validated in engine (intentional flaw, see P013)."""
-    summary: str
-    action_items: list[str]
-    next_steps: list[str]
+    summary: NonEmptyText
+    action_items: list[NonEmptyText]
+    next_steps: list[NonEmptyText]

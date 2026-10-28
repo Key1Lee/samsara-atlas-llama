@@ -27,3 +27,20 @@ def db_session():
         yield db
     finally:
         db.close()
+
+
+@pytest.fixture(autouse=True)
+def deterministic_stub(monkeypatch):
+    from app.providers.stub import StubProvider
+    monkeypatch.setattr("app.engine.steps.get_provider", lambda: StubProvider(timeout_chance=0))
+
+
+@pytest.fixture(autouse=True)
+def isolated_daily_quota(db_session, monkeypatch):
+    # Each test starts with its own quota budget, independent of test order.
+    from app.storage.models import EmployeeDailyRequests
+    # Ordinary synthetic regression tests explicitly opt into the demo profile.
+    monkeypatch.setenv("ATLAS_ENV", "development")
+    monkeypatch.delenv("ATLAS_EMPLOYEE_TOKEN_HASHES", raising=False)
+    db_session.query(EmployeeDailyRequests).delete()
+    db_session.commit()

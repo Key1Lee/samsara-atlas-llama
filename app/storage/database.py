@@ -23,6 +23,11 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 def init_db():
     Path(_DEFAULT_DB).parent.mkdir(parents=True, exist_ok=True)
     Base.metadata.create_all(bind=engine)
+    # Also add the retry constraints to an existing, clean assessment database.
+    for table in Base.metadata.sorted_tables:
+        for index in table.indexes:
+            if index.unique:
+                index.create(bind=engine, checkfirst=True)
 
 
 def get_session():
