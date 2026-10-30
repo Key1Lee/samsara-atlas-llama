@@ -11,7 +11,7 @@ from app.tools.retrieval import _tokenize, contains_policy_override
 
 
 def _terms(value: str) -> set[str]:
-    return set(_tokenize(value))
+    normalized = re.sub(r'\\bpaid\\s+time(?:\\s+off)?\\b', 'pto', value, flags=re.I)\n    return set(_tokenize(normalized))
 
 
 def lookup_policy_passage(question: str, user_context: dict | None = None) -> dict:
@@ -56,7 +56,12 @@ def lookup_policy_passage(question: str, user_context: dict | None = None) -> di
     spans = sections(doc)
     # A general "what is this policy?" request is answered with the original
     # text, not a generated interpretation. No inference of entitlement.
-    passage = doc.page_content
+    # Include enough introductory text for an overview, and the first
+    # substantive section if the introduction contains only a title.
+    end = spans[0][1]
+    if len(_terms(doc.page_content[:end])) < 8 and len(spans) > 1:
+        end = spans[1][1]
+    passage = doc.page_content[:end]
     metadata = {**doc.metadata, "span_start": 0, "span_end": len(passage)}
     verify_span(settings, metadata, passage, user_context)
     if contains_policy_override(passage):
