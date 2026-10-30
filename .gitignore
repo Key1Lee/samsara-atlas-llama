@@ -7,3 +7,8 @@ data/*.db.case-locks/
 .pytest_cache/
 *.egg-info/
 output/
+data/rag/
+data/benchmarks/active-window.json
+
+__pycache__/
+*.py[cod]

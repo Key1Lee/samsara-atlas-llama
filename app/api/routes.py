@@ -15,7 +15,8 @@ import json
 from sqlalchemy import func, case as sql_case
 from sqlalchemy.exc import SQLAlchemyError
 from app.api.access import employee_access, require_scope, authentication_required, analytics_access
-from app.benchmarks import global_benchmark
+from app.benchmarks import global_benchmark, BenchmarkWindowUnavailable
+from app.rag.errors import RAGError
 
 router = APIRouter()
 
@@ -44,11 +45,11 @@ def get_info():
 
 
 @router.get("/benchmarks/latest")
-def get_global_benchmark(_=Depends(analytics_access)):
+def get_global_benchmark(include_history: bool = False, _=Depends(analytics_access)):
     try:
         with SessionLocal() as db:
-            return global_benchmark(db)
-    except SQLAlchemyError:
+            return global_benchmark(db, include_history=include_history)
+    except (SQLAlchemyError, BenchmarkWindowUnavailable):
         raise HTTPException(503, "Benchmark data unavailable.") from None
 
 
@@ -94,6 +95,9 @@ def create_case(req: CreateCaseRequest, employee: str | None = Depends(employee_
         raise HTTPException(status_code=503, detail=str(exc)) from None
     except IdempotencyConflict as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from None
+    except RAGError as exc:
+        raise HTTPException(status_code=exc.status_code, detail={'error_code': exc.code,
+            'guidance': 'Check policy retrieval configuration; retry with the same idempotency key.'}) from None
     except Exception:
         raise HTTPException(status_code=500, detail="Workflow failed; inspect the case steps and retry with the same idempotency key.") from None
 

@@ -13,6 +13,7 @@ from app.storage.models import Case, CaseAuditEvent
 ROOT = Path(__file__).resolve().parents[1]
 REVIEWS = ROOT / 'data/benchmarks/e11342-live-2026-10-27.json'
 STAGES = ROOT / 'data/benchmarks/stages.json'
+WINDOW = ROOT / 'data/benchmarks/active-window.json'
 CATEGORIES = ('Correct answer', 'Incorrect or incomplete answer', 'No information available',
               'Workflow error', 'Awaiting review')
 # Independent multi-label matches: a mixed PTO/remote question counts in both bars.
@@ -99,14 +100,39 @@ def staged_benchmarks():
             'next_steps': 'Investigate baseline failures before expanding to 350 source-checked questions at 30 requests/minute. Stress testing follows the expanded run with explicit rates, duration and stopping limits; no stress score is inferred.'}
 
 
-def global_benchmark(db):
+class BenchmarkWindowUnavailable(RuntimeError):
+    pass
+
+
+def active_benchmark_window():
+    try:
+        window = json.loads(WINDOW.read_text(encoding='utf-8'))
+    except FileNotFoundError:
+        return None
+    except (OSError, ValueError):
+        raise BenchmarkWindowUnavailable() from None
+    if (not isinstance(window, dict) or window.get('version') != 1
+            or type(window.get('after_case_id')) is not int or window['after_case_id'] < 0
+            or not re.fullmatch(r'qa100-[a-f0-9]{32}-', str(window.get('key_prefix', '')))
+            or not isinstance(window.get('label'), str) or not window['label'].strip()
+            or not isinstance(window.get('reset_at'), str)):
+        raise BenchmarkWindowUnavailable()
+    return window
+
+
+def global_benchmark(db, *, include_history=False):
+    window = None if include_history else active_benchmark_window()
     reviews, available = documented_reviews()
     counts = dict.fromkeys(CATEGORIES, 0)
     topics = dict.fromkeys([*TOPICS, 'Other/unknown'], 0)
     ids = []
     excluded = 0
     in_progress = 0
-    for case in db.query(Case).order_by(Case.id).yield_per(100):
+    query = db.query(Case)
+    if window:
+        query = query.filter(Case.id > window['after_case_id'],
+                             Case.idempotency_key.startswith(window['key_prefix'], autoescape=True))
+    for case in query.order_by(Case.id).yield_per(100):
         try:
             inputs = json.loads(case.inputs_json or '{}')
             question = inputs['case_transcript']
@@ -144,7 +170,10 @@ def global_benchmark(db):
     appropriate = counts['Correct answer'] + counts['No information available']
     reviewed = counts['Correct answer'] + counts['Incorrect or incomplete answer'] + counts['No information available']
     return {
-        'scope': 'application', 'updated_at': datetime.now(timezone.utc).isoformat(),
+        'scope': 'benchmark_run' if window else 'application',
+        'benchmark_window': {'label': window['label'], 'reset_at': window['reset_at'],
+                             'history_preserved': True} if window else None,
+        'updated_at': datetime.now(timezone.utc).isoformat(),
         'summary': {'total': total, 'counts': counts,
                     'percentages': {name: percent(count) for name, count in counts.items()},
                     'appropriate_outcomes': appropriate, 'appropriate_outcome_percent': percent(appropriate),
@@ -153,7 +182,9 @@ def global_benchmark(db):
                     'retry_attempts_recorded': retries, 'in_progress': in_progress,
                     'excluded_invalid_records': excluded},
         'topic_counts': topics, 'review_evidence_available': available,
-        'staged_benchmark': staged_benchmarks(),
+        'staged_benchmark': staged_benchmarks() if not window else {
+            'stages': [], 'capacity': 'Unknown',
+            'method': 'Historical staged experiments are excluded from the current benchmark window.'},
         'scoring_method': 'One persisted HR-question submission counts once across all employees. Idempotent retries reuse that submission; an explicit replay/new key is a new submission. Category percentage = category count / total submissions × 100. Page views, GET requests and rejected requests without a persisted case are excluded. Failed workflows count as workflow errors. A completed answer receives a quality score only when its full inputs, submission key and full outputs match documented review evidence and policy files are unchanged; all others await review. Model confidence, answerability labels and HTTP 200 do not establish correctness.',
         'topic_method': 'Case-insensitive word/phrase rules: PTO (PTO, paid time off, vacation, carryover/rollover); remote work (remote, relocation, work from home, work location, moving states, laptop/peripherals); benefits (benefits, insurance, health/medical coverage, dental, vision, retirement/401k); expenses (expense, reimbursement, receipt); leave (leave, parental, maternity/paternity, FMLA/CFRA, bereavement). Each question counts at most once per matching topic; multiple topics may match, so bars can sum above total submissions. Other/unknown means no match. No LLM or embeddings are used.',
         'limitations': ['Scores describe recorded submissions and documented reviews, not HR approval or production accuracy.',

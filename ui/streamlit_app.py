@@ -5,6 +5,9 @@ from uuid import uuid4
 from dotenv import load_dotenv
 import requests
 import streamlit as st
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from presentation import apply_presentation, render_answer, render_logistics_header, render_masthead, render_workspace_intro
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
@@ -52,9 +55,14 @@ def list_cases():
     return resp.json()
 
 
-st.set_page_config(page_title="Samsaran Atlas", page_icon="🧭", layout="wide")
-st.title("Samsaran Atlas")
-st.caption("HR Case Response Assistant")
+st.set_page_config(page_title="Atlas · Employee guidance", page_icon=":material/spa:", layout="centered", initial_sidebar_state="collapsed")
+apply_presentation()
+render_masthead()
+render_logistics_header()
+st.html('<div class="atlas-kicker">YOUR SAMSARAN HUB</div>')
+st.title("Increase the safety, efficiency, and sustainability of the operations that power the global economy.")
+st.html('<p class="atlas-lead"><strong>Welcome to your Samsaran Hub for Time Off, Employee Benefits, and Work-Life Resources.</strong></p>')
+render_workspace_intro()
 
 def clear_employee_view():
     for key in ("selected_employee", "employee_choice", "case_result", "loaded_case",
@@ -79,10 +87,10 @@ with st.sidebar:
             st.error("Provider configuration error. Select stub or ollama and restart the API.")
     except Exception:
         st.warning("API not reachable")
-    st.info(
-        "**Real LLM:** Create `.env` with `PROVIDER_TYPE=ollama` and restart the API.\n\n"
-        "Or run `make api-ollama`. Requires [Ollama](https://ollama.ai) + `ollama pull llama3.2`"
-    )
+    st.toggle("Reduce motion", value=False, key="reduce_motion",
+              help="Disable nonessential animation. Your system’s reduced-motion preference is always respected.")
+    with st.expander("Connection details"):
+        st.caption("Local Atlas API · workflow and model configuration are managed by your administrator.")
     st.caption("All employee data shown here is synthetic fixture data.")
 
 def render_question_page():
@@ -118,8 +126,8 @@ def render_question_page():
                 st.session_state.pop(key, None)
 
     if "selected_employee" not in st.session_state:
-        st.subheader("Select an employee")
-        st.write("Choose an employee to continue to their question page.")
+        st.subheader("Your space, your questions")
+        st.write("Choose your synthetic demo profile to get started. Your question history stays with this profile.")
         employee_id = st.selectbox(
             "Employee ID", options=employees, index=None,
             placeholder="Select an employee", disabled=not employees,
@@ -141,7 +149,7 @@ def render_question_page():
 
     st.session_state.pop("employee_password", None)
     employee_id = st.session_state["selected_employee"]
-    st.write(f"**Selected employee:** {employee_id}")
+    st.caption(f"YOUR WORKSPACE · {employee_id}")
     if st.button("Change employee"):
         for key in (*conversation_keys, "employee_choice", "employee_password"):
             st.session_state.pop(key, None)
@@ -150,15 +158,19 @@ def render_question_page():
     pending = st.session_state.get("submission")
     if "question" not in st.session_state and pending and pending["inputs"]["employee_id"] == employee_id:
         st.session_state["question"] = pending["inputs"]["case_transcript"]
+    st.subheader("What’s on your mind?")
+    st.caption("Try a question about time off, benefits, or working remotely. Avoid adding sensitive personal details.")
     with st.form("workflow_form"):
         case_transcript = st.text_area(
             "Case question",
             value="Asked how PTO carryover works going into next year. Has about 30 unused hours.",
-            height=100, key="question",
+            height=150, key="question",
         )
-        submitted = st.form_submit_button("Run Workflow")
+        submitted = st.form_submit_button("Ask Atlas", type="primary", width="stretch")
 
-    if submitted and employee_id in employees:
+    if submitted and not case_transcript.strip():
+        st.error("Write a question before asking Atlas.")
+    if submitted and case_transcript.strip() and employee_id in employees:
         tone = "empathetic"
         inputs = {"employee_id": employee_id, "case_transcript": case_transcript, "tone": tone}
         submission = st.session_state.get("submission")
@@ -166,7 +178,9 @@ def render_question_page():
             submission = {"inputs": inputs, "key": uuid4().hex}
             st.session_state["submission"] = submission
         idempotency_key = submission["key"]
-        with st.spinner("Running workflow..."):
+        loading = st.empty()
+        loading.info("Preparing your answer. Keep this page open; repeating the request will reuse the same case.")
+        with st.container():
             try:
                 result = run_workflow(
                     employee_id=employee_id,
@@ -185,22 +199,16 @@ def render_question_page():
             except requests.exceptions.RequestException as e:
                 st.session_state.pop("case_result", None)
                 st.error(f"Error: {e}")
+                st.caption("You can retry by asking again with the same question. Atlas will reuse the submission key.")
+            finally:
+                loading.empty()
 
     if "case_result" in st.session_state and st.session_state["case_result"].get("status") == "completed":
-        st.subheader("Drafted Response")
-        outputs = st.session_state["case_result"].get("outputs", {})
-        # There is no verified approval operation; model/legacy quality labels cannot grant it.
-        st.warning("Draft only: HR review is required. Workflow completion does not mean the answer is approved.")
-        st.write(f"**Subject:** {outputs.get('subject', '')}")
-        st.write(outputs.get("body", ""))
-        if outputs.get("cited_snippets"):
-            with st.expander("Cited policy snippets"):
-                for s in outputs["cited_snippets"]:
-                    st.write(f"- {s}")
+        render_answer(st.session_state["case_result"].get("outputs", {}))
 
     st.divider()
     try:
-        st.subheader("Cases for this employee")
+        st.subheader("Your question history")
         records = list_cases().get("cases", [])
         if records:
             st.dataframe([{"Case ID": row["case_id"], "Question": row["question"],
@@ -213,7 +221,8 @@ def render_question_page():
 
 
 page = st.navigation([
-    st.Page(render_question_page, title="Case question", icon=":material/chat:", default=True),
+    st.Page(render_question_page, title="Ask Atlas", icon=":material/chat:", default=True),
+    st.Page("app_pages/policies.py", title="Policy library", icon=":material/menu_book:"),
     st.Page("app_pages/benchmark.py", title="Benchmark", icon=":material/bar_chart:"),
 ], position="top")
 page.run()

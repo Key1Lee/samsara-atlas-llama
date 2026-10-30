@@ -35,3 +35,7 @@ app.add_middleware(
 )
 app.middleware("http")(correlate_request)
 app.include_router(router, prefix="", tags=["cases"])
+
+# Disabled by default; dedicated developer credential plus employee policy scope.
+from app.rag.diagnostics import router as rag_diagnostic_router
+app.include_router(rag_diagnostic_router, tags=["developer diagnostics"])

@@ -22,6 +22,9 @@ def error_code(exc):
         exc = exc.last_attempt.exception()
     if isinstance(exc, ProviderError):
         return type(exc).code
+    from app.rag.errors import RAGError
+    if isinstance(exc, RAGError):
+        return exc.code
     if isinstance(exc, SQLAlchemyError):
         return 'storage_error'
     if isinstance(exc, (TimeoutError, ConnectionError, OSError)):

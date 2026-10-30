@@ -85,7 +85,7 @@ def _topic_tokens(content: str) -> set[str]:
     return set(_tokenize(introduction + "\n" + headings)) - _TOPIC_COMMON
 
 
-def retrieve_policy_snippets(query: str, top_k: int = 5) -> list[str]:
+def retrieve_policy_snippets(query: str, top_k: int = 5, user_context=None) -> list[str]:
     """Return complete small policy sources, gated by lexical topic evidence.
 
     BM25 ranks candidates; it does not prove entitlement or legal applicability.
@@ -94,6 +94,14 @@ def retrieve_policy_snippets(query: str, top_k: int = 5) -> list[str]:
     """
     if top_k <= 0:
         return []
+    from app.rag.config import Settings, retrieval_mode
+    mode = retrieval_mode()
+    if mode != 'lexical':
+        from app.rag.retrieval import get_service, PolicySnippets
+        result = get_service(Settings()).retrieve(query, user_context, top_k=top_k, mode=mode)
+        from app.evaluation.observation import record_retrieval
+        record_retrieval(result.metadata['candidates'])
+        return PolicySnippets(result.passages, result.metadata)
     docs_dir = os.getenv("DOCS_DIR", str(_PROJECT_ROOT / "data" / "docs"))
     pairs = _load_docs(docs_dir)
     if not pairs:

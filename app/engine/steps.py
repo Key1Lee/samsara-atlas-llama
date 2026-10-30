@@ -120,6 +120,14 @@ def _preserve_carryover_conditions(ctx, response: dict) -> dict:
                            response["subject"] + " " + response["body"], re.IGNORECASE)
     sources = [source for source in ctx.step_outputs.get("retrieve_policy_snippets", [])
                if source.splitlines() and source.splitlines()[0].strip() == "# Paid Time Off (PTO) Policy"]
+    if ctx.artifacts.get('rag_retrieval'):
+        from app.rag.config import Settings
+        from app.rag.documents import load_sources, allowed
+        selected_ids = {meta['document_id'] for meta in ctx.artifacts['rag_retrieval'].get('context_spans', [])}
+        sources = [doc.page_content for doc in load_sources(Settings())
+                   if doc.metadata['document_id'] in selected_ids
+                   and allowed(doc.metadata, {'employee_id': ctx.inputs['employee_id']})
+                   and doc.metadata['document_title'] == 'Paid Time Off (PTO) Policy']
     if not ((pto and carryover) or (sources and draft_rule)):
         return response
     if re.search(r"\b(?:remote|remotely|relocat\w*|moving states?)\b", question):
@@ -229,12 +237,18 @@ def retrieve_employee_context_step(ctx):
             "pto_balance": unavailable_pto_balance(ctx.inputs["employee_id"])}
 
 
+@diagnosed('atlas.retrieval.v1')
 def retrieve_policy_snippets_step(ctx):
     registry = get_tool_registry()
+    from app.rag.config import retrieval_mode
+    options = {'user_context': {'employee_id': ctx.inputs['employee_id']}} if retrieval_mode() != 'lexical' else {}
     out = registry.execute(
         "retrieve_policy_snippets",
         query=ctx.inputs["case_transcript"],
+        **options,
     )
+    if hasattr(out, 'retrieval_metadata'):
+        ctx.artifacts['rag_retrieval'] = out.retrieval_metadata
     return out
 
 
@@ -249,6 +263,14 @@ def _normalize_summary(data: dict) -> dict:
 
 def _bounded_prompt(name: str, employee_context, **values) -> str:
     template = _load_prompt(name)
+    from app.rag.config import retrieval_mode
+    if retrieval_mode() != 'lexical':
+        template = template.replace('complete selected policy sources', 'selected policy passages')
+        template = template.replace('Complete selected policy sources:', 'Selected policy passages:')
+        template += ('\nPreserve exact numeric values, governing conditions and exceptions. '
+                     'Cite each material policy claim using a verbatim passage above. '
+                     'If evidence does not answer the question, identify missing information and ask HR. '
+                     'Never invent a missing accrual rate, personal balance, benefit or approval.\n')
     prompt = template.format(employee_context=json.dumps(employee_context, indent=2), **values)
     try:
         require_prompt_budget(prompt)
@@ -266,6 +288,13 @@ def _bounded_prompt(name: str, employee_context, **values) -> str:
         }
         prompt = template.format(employee_context=json.dumps(compact, indent=2), **values)
         require_prompt_budget(prompt)
+    if retrieval_mode() != 'lexical':
+        # A UTF-8 byte is a conservative upper bound on ordinary text tokens.
+        # Reserve generation tokens and structured-format/system overhead too.
+        context = int(os.getenv('OLLAMA_CONTEXT_TOKENS', '8192'))
+        output = int(os.getenv('OLLAMA_OUTPUT_TOKENS', '1024'))
+        if len(prompt.encode('utf-8')) + output + 512 > context:
+            raise ContextBudgetExceeded('Required policy context cannot fit the model budget')
     return prompt
 
 
@@ -317,6 +346,10 @@ def generate_structured_response_step(ctx):
         return answerability(result, status, reason)
     intent = classify_policy_intent(ctx.inputs.get("case_transcript", ""))
     if intent:
+        from app.rag.config import retrieval_mode
+        if retrieval_mode() != 'lexical':
+            from app.rag.retrieval import guard_deterministic_sources
+            guard_deterministic_sources(intent, {'employee_id': ctx.inputs['employee_id']})
         result = deterministic_policy_response(intent, ctx.inputs["tone"])
         if intent == "PTO_POLICY":
             result["pto_balance"] = unavailable_pto_balance(ctx.inputs["employee_id"])
@@ -376,7 +409,18 @@ def generate_structured_response_step(ctx):
         return _pto_balance_review(ctx)
 
     evidence = []
+    retrieval = ctx.artifacts.get('rag_retrieval')
+    if retrieval and not response.cited_snippets:
+        raise OutputRuleError('citation_required', 'A policy draft requires an evidence citation')
     for quote in response.cited_snippets:
+        if retrieval:
+            from app.rag.config import Settings
+            from app.rag.retrieval import verified_citation
+            if contains_policy_override(quote):
+                raise OutputRuleError('citation_instruction', 'Citation contains application-control instructions')
+            evidence.append(verified_citation(quote, snippets, retrieval, Settings(),
+                {'employee_id': ctx.inputs['employee_id']}))
+            continue
         sources = list(dict.fromkeys(source for source in snippets if quote in source))
         if not sources:
             raise OutputRuleError("citation_absent", "Citation is absent from selected policy sources")

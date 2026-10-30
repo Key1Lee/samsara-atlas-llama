@@ -17,6 +17,7 @@ class OutputRuleError(ValueError):
 
 RULES = frozenset({'json_object_required', 'tone_mismatch', 'unsupported_execution_claim',
     'citation_absent', 'citation_instruction', 'citation_unrelated', 'citation_ambiguous',
+    'citation_required', 'citation_unverified',
     'json_syntax', 'schema_fields', 'context_budget', 'dependency_import', 'unclassified'})
 
 def failure_diagnostic(exc, schema='unknown'):
@@ -33,6 +34,7 @@ def failure_diagnostic(exc, schema='unknown'):
     elif isinstance(exc, OutputRuleError):
         subtype = 'format_validation' if rule == 'json_object_required' else 'semantic_validation'
     elif getattr(exc, 'code', '').startswith('provider_'): subtype = 'provider_failure'
+    elif getattr(exc, 'code', '').startswith('rag_'): subtype = 'retrieval_failure'
     result = {'error_subtype': subtype, 'validation_rule': rule,
               'model_completion_status': completion_status.get(),
               'schema_version': schema, 'request_id': current_request_id.get(),
@@ -53,6 +55,9 @@ def failure_diagnostic(exc, schema='unknown'):
         'context_budget':'Complete prompt exceeds context budget', 'dependency_import':'A Python import failed',
         'json_object_required':'Expected a JSON object'}
     result['sanitized_message'] = safe_messages.get(rule, 'Inspect the recorded error subtype')
+    from app.rag.errors import RAGError
+    if isinstance(exc, RAGError):
+        result['retrieval_error_code'] = exc.code
     result['error_type'] = type(exc).__name__ if type(exc).__name__ in {'ValueError','OutputRuleError','JSONDecodeError','ValidationError','ImportError','ModuleNotFoundError','ContextBudgetExceeded','ProviderInvalidOutput','ProviderTimeout'} else 'other'
     root=Path(__file__).resolve().parent.parent
     frames=[]

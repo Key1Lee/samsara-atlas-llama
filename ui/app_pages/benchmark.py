@@ -3,7 +3,7 @@ import requests
 import streamlit as st
 
 st.subheader('Application benchmark')
-st.caption('All employees · live database totals · independent of the selected employee')
+st.caption('All employees · active benchmark window or all-time history')
 st.text_input('Analytics access token', type='password', key='analytics_access_token',
               help='Separate operator credential. Employee tokens and the demo password do not grant analytics access.')
 if not st.session_state.get('analytics_access_token'):
@@ -13,9 +13,12 @@ if not st.session_state.get('analytics_access_token'):
 
 @st.fragment(run_every='15s')
 def show_benchmark():
+    include_history = st.toggle('Include earlier submissions', value=False,
+                                help='Show all-time totals without changing or deleting any cases.')
     st.button('Refresh benchmark')
     try:
         response = requests.get('http://localhost:8000/benchmarks/latest',
+                                params={'include_history': str(include_history).lower()},
                                 headers={'Authorization': f"Bearer {st.session_state['analytics_access_token']}"}, timeout=10)
         if response.status_code in (401, 403):
             st.error('Analytics access denied. Enter a valid analytics token.')
@@ -30,7 +33,10 @@ def show_benchmark():
         return
 
     summary = benchmark['summary']
-    st.subheader('All recorded application submissions')
+    window = benchmark.get('benchmark_window')
+    st.subheader('Current benchmark submissions' if window else 'All recorded application submissions')
+    if window:
+        st.caption(f"{window['label']} · Reset at {window['reset_at']} · Earlier cases and audit history are preserved.")
     left, right = st.columns(2)
     left.metric('Total submissions', str(summary['total']))
     right.metric('Recorded retry attempts', str(summary['retry_attempts_recorded']))

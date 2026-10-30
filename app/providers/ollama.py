@@ -45,7 +45,8 @@ class OllamaProvider(ModelProvider):
                 "prompt": prompt,
                 "stream": False,
                 **({"format": output_schema} if output_schema else {}),
-                "options": {"num_ctx": 8192, "num_predict": 1024},
+                "options": {"num_ctx": int(os.getenv('OLLAMA_CONTEXT_TOKENS', '8192')),
+                            "num_predict": int(os.getenv('OLLAMA_OUTPUT_TOKENS', '1024'))},
             },
             timeout=120,
         )

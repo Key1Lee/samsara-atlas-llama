@@ -250,3 +250,40 @@ def test_employee_quota_cannot_block_separately_authorized_global_analytics(api_
     assert not any('Daily limit' in error.value for error in ui.error)
     assert api_bridge.get('/cases', headers={'X-Employee-ID': 'E11342'}).status_code == 429
 
+
+@pytest.fixture(autouse=True)
+def isolated_benchmark_window(tmp_path, monkeypatch):
+    monkeypatch.setattr('app.benchmarks.WINDOW', tmp_path / 'active-window.json')
+
+
+def test_reset_window_starts_at_zero_preserves_history_and_filters_run(benchmark_db, tmp_path):
+    from app.benchmarks import WINDOW
+    old = add_case(benchmark_db, 'old', 'PTO carryover?', status='failed')
+    prefix = 'qa100-' + 'a' * 32 + '-'
+    WINDOW.write_text(json.dumps({'version': 1, 'after_case_id': old.id,
+        'key_prefix': prefix, 'label': 'QA rerun', 'reset_at': '2026-10-30T00:00:00+00:00'}))
+    assert global_benchmark(benchmark_db)['summary']['total'] == 0
+    current = add_case(benchmark_db, 'current', 'What is PTO?')
+    current.idempotency_key = prefix + 'QA001'
+    benchmark_db.add(CaseAuditEvent(case_id=old.id, event_type='request_reused', outcome='observed', request_id='historical-retry'))
+    benchmark_db.commit()
+    add_case(benchmark_db, 'unrelated', 'An unrelated expense question')
+    result = global_benchmark(benchmark_db)
+    assert result['scope'] == 'benchmark_run' and result['summary']['total'] == 1
+    assert result['summary']['counts']['Awaiting review'] == 1
+    assert result['summary']['retry_attempts_recorded'] == 0
+    assert result['staged_benchmark']['stages'] == []
+    assert benchmark_db.query(Case).count() == 3
+    assert benchmark_db.query(CaseAuditEvent).count() == 1
+    history = global_benchmark(benchmark_db, include_history=True)
+    assert history['scope'] == 'application' and history['summary']['total'] == 3
+    assert history['summary']['retry_attempts_recorded'] == 1
+
+
+def test_invalid_reset_window_fails_closed_but_history_remains_available(benchmark_db, analytics_auth):
+    from app.benchmarks import WINDOW
+    WINDOW.write_text('{bad JSON')
+    with TestClient(app) as client:
+        assert client.get('/benchmarks/latest', headers=HEADERS).status_code == 503
+        assert client.get('/benchmarks/latest?include_history=true', headers=HEADERS).status_code == 200
+        assert client.get('/benchmarks/latest?include_history=true').status_code == 401

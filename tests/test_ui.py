@@ -97,7 +97,7 @@ def continue_to_question(app, employee="E10234"):
 
 
 def run_button(app):
-    return next(button for button in app.button if button.label == "Run Workflow")
+    return next(button for button in app.button if button.label == "Ask Atlas")
 
 
 def test_employee_selection_precedes_question_and_employee_cases(api_bridge):
@@ -108,9 +108,9 @@ def test_employee_selection_precedes_question_and_employee_cases(api_bridge):
     continue_to_question(app, "E10897")
     assert app.session_state["selected_employee"] == "E10897"
     assert len(app.text_area) == 1
-    assert any(s.value == "Cases for this employee" for s in app.subheader)
+    assert any(s.value == "Your question history" for s in app.subheader)
     assert not app.number_input and not app.text_input and not app.selectbox
-    assert app.title[0].value == "Samsaran Atlas"
+    assert app.title[0].value == "Increase the safety, efficiency, and sustainability of the operations that power the global economy."
     assert app.text_area[0].label == "Case question"
     assert not any(b.label in {"Load Case", "Replay Case"} for b in app.button)
     app.text_area[0].set_value("How many PTO hours can I carry over?")
@@ -317,3 +317,50 @@ def test_existing_ui_session_must_pass_new_password_gate(api_bridge):
     assert not app.exception and not app.text_area and not app.dataframe
     assert any(w.label == "Password" for w in app.text_input)
     assert "case_result" not in app.session_state
+
+
+def test_blank_question_does_not_create_submission(api_bridge, monkeypatch):
+    app = AppTest.from_file(UI).run()
+    continue_to_question(app)
+    def forbidden(*args, **kwargs):
+        pytest.fail('Blank question must not reach API')
+    monkeypatch.setattr(requests, 'post', forbidden)
+    app.text_area[0].set_value('   ')
+    run_button(app).click().run()
+    assert not app.exception
+    assert any('Write a question' in e.value for e in app.error)
+
+
+def test_header_motion_can_be_disabled(api_bridge):
+    app = AppTest.from_file(UI).run()
+    assert app.toggle(key='reduce_motion').value is False
+    app.toggle(key='reduce_motion').set_value(True).run()
+    assert app.toggle(key='reduce_motion').value is True
+
+
+def test_policy_library_denies_unverified_access(monkeypatch):
+    def denied(*args, **kwargs):
+        response = requests.Response()
+        response.status_code = 401
+        return response
+    monkeypatch.setattr(requests, 'get', denied)
+    page = str(Path(UI).parent / 'app_pages' / 'policies.py')
+    app = AppTest.from_file(page).run()
+    assert not app.exception
+    assert app.error and not app.expander
+
+
+def test_long_draft_retains_plain_text_subject_and_citation():
+    def screen():
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path.cwd() / 'ui'))
+        from presentation import render_answer
+        render_answer({'subject': '<script>unsafe()</script>',
+                       'body': 'Long policy explanation. ' * 1000,
+                       'cited_snippets': ['<img src="https://example.invalid/track">']})
+    app = AppTest.from_function(screen).run()
+    assert not app.exception
+    assert any('<script>unsafe()' in t.value for t in app.text)
+    assert any('<img src=' in t.value for t in app.text)
+    assert any('Long policy explanation.' in m.value for m in app.markdown)

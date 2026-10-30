@@ -136,16 +136,24 @@ def _execute(db, case, inputs):
     try:
         workflow_steps = STEPS
         previous_steps = {name for (name,) in db.query(Step.name).filter_by(case_id=case.id)}
+        from app.rag.config import retrieval_mode
+        rag_enabled = retrieval_mode() != 'lexical'
         # Keep the already-started route on recovery. Re-running retrieval to
         # choose a route could skip a pending note if policy files have changed.
-        deterministic_only = (previous_steps == {'generate_structured_response'} if previous_steps else
-                              bool(classify_policy_intent(inputs["case_transcript"])
-                                   or not retrieve_policy_snippets(inputs["case_transcript"])))
+        if previous_steps:
+            deterministic_only = previous_steps == {'generate_structured_response'}
+        else:
+            deterministic_only = bool(classify_policy_intent(inputs['case_transcript']))
+            if not deterministic_only and not rag_enabled:
+                deterministic_only = not retrieve_policy_snippets(inputs['case_transcript'])
         if deterministic_only:
             # Deterministic policy answers and unsupported questions need no
             # model, employee context, or HRIS write.
             workflow_steps = [(name, fn) for name, fn in STEPS if name == "generate_structured_response"]
         for step_name, step_fn in workflow_steps:
+            if (rag_enabled and step_name in {'summarize_and_extract_actions', 'post_case_note_to_hris'}
+                    and ctx.step_outputs.get('retrieve_policy_snippets') == []):
+                continue
             step_record = db.query(Step).filter_by(case_id=case.id, name=step_name).first()
             if step_record and step_record.status == "completed":
                 ctx.step_outputs[step_name] = json.loads(step_record.output_json)
@@ -182,6 +190,7 @@ def _execute(db, case, inputs):
                     ctx.artifacts['step_diagnostics'] = ctx.artifacts['step_diagnostics'][-50:]
                     case.artifacts_json = json.dumps(ctx.artifacts)
             ctx.step_outputs[step_name] = output
+            case.artifacts_json = json.dumps(ctx.artifacts)
             step_record.output_json = json.dumps(output)
             step_record.status = "completed"
             step_record.finished_at = datetime.now(timezone.utc)
