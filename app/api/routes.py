@@ -74,6 +74,26 @@ def list_cases(employee: str | None = Depends(employee_access)):
         db.close()
 
 
+
+class PolicyLookupRequest(BaseModel):
+    question: str
+
+
+@router.post("/policies/lookup")
+def lookup_policy(req: PolicyLookupRequest, employee: str | None = Depends(employee_access)):
+    """Verbatim policy lookup; no case creation, HRIS mutation, or LLM call."""
+    if not req.question.strip() or len(req.question) > 2000:
+        raise HTTPException(422, "Question must contain 1-2000 characters.")
+    from app.rag.fast_lookup import lookup_policy_passage
+    try:
+        return lookup_policy_passage(req.question, {"employee_id": employee})
+    except RAGError as exc:
+        raise HTTPException(status_code=exc.status_code, detail={
+            "error_code": exc.code,
+            "guidance": "Verify policy source access and freshness."
+        }) from None
+
+
 class CreateCaseRequest(BaseModel):
     inputs: CaseInputs
     idempotency_key: IdempotencyKey | None = None
